@@ -1,0 +1,148 @@
+$fontServer: "";
+
+body {
+  font-family: Arial, sans-serif !important;
+  font-size: 18px !important;
+  letter-spacing: 1.5pt !important;
+  overflow-x: hidden;
+
+  > .ui.grid {
+    margin: 0;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+h1 {
+  font-family: Georgia, Times;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1em;
+  letter-spacing: .01em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 18px !important;
+}
+
+p {
+  font-family: Arial, sans-serif;
+  letter-spacing: .03em;
+  font-weight: normal;
+}
+
+input {
+  width: 100%;
+  border-style: solid;
+  margin-bottom: .5rem;
+}
+
+button {
+  width: 100%;
+  background-color: #000;
+  border-width: 0;
+  padding: .5rem;
+  font-family: 'FuturaPT-Book';
+  letter-spacing: 1.25pt;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #fff;
+
+  &.red {
+    background-color: #FF4300;
+  }
+}
+
+.md-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+
+}
+
+.md-show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #888;
+  border-bottom: 0px;
+  outline: none;
+  margin: 5px 0;
+}
+
+@import "_vars.scss";
+
+/* Mobile only, hide others*/
+@media only screen and (max-width: $mobile) {
+
+  [class*="tablet only"]:not(.mobile) {
+    display: none !important;
+  }
+
+  [class*="computer only"]:not(.mobile) {
+    display: none !important;
+  }
+}
+
+/* Tablet only, hide others*/
+@media only screen and (min-width: $mobile) and (max-width: $tablet) {
+  [class*="mobile only"]:not(.tablet) {
+    display: none !important;
+  }
+
+  [class*="computer only"]:not(.tablet) {
+    display: none !important;
+  }
+}
+
+/* Computer only, hide others*/
+@media only screen and (min-width: $tablet) {
+  [class*="mobile only"]:not(.computer) {
+    display: none !important;
+  }
+
+  .ui[class*="tablet only"]:not(.computer) {
+    display: none !important;
+  }
+}
+
+/* Computer only, hide others*/
+@media only print {
+  [class*="mobile only"]:not(.computer) {
+    display: none !important;
+  }
+
+  [class*="tablet only"]:not(.computer) {
+    display: none !important;
+  }
+
+  [class*="dont print"] {
+    display: none !important;
+  }
+
+}

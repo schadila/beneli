@@ -1,0 +1,22 @@
+AddDefaultCharset utf-8
+
+<Files .htaccess>
+    order allow,deny
+    deny from all
+</Files>
+
+
+<IfModule mod_rewrite.c>
+    Options -MultiViews
+    RewriteEngine On
+    RewriteBase /
+
+
+    RewriteRule ^fr$ /index-fr.html [QSA,L]
+    RewriteRule ^api/(.*) /php/API.php/ [QSA,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule . index-de.html [QSA,L]
+
+</IfModule>

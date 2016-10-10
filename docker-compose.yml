@@ -1,0 +1,31 @@
+version: '2'
+services:
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3336:3306"
+    volumes:
+      - "/var/lib/mysql"
+      - "./.docker/sql:/docker-entrypoint-initdb.d"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fondue
+      MYSQL_USER: fondue
+      MYSQL_PASSWORD: fondue
+
+  apache:
+    image: chialab/php:5.6-apache
+    ports:
+      - "9000:80"
+    volumes:
+      - "./build:/var/www/html/"
+    restart: always
+    links:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: fondue
+      DB_USER: fondue
+      DB_PASSWORD: fondue

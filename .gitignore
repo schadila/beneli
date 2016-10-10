@@ -1,0 +1,5 @@
+workspace.xml
+.DS_Store
+/build
+/node_modules
+!node_modules/gulp-i18n-localize/index.js
