@@ -16,20 +16,20 @@ var options = {
 
 gulp.task('deploy-dev', ['build-dev'], function () {
 
-    // options.hostname = 'contexta04.nine.ch';
-    // options.username = 'dev';
-    // options.destination = '/home/dev/www/dev-valisanne/';
-    //
-    // return gulp
-    //     .src(['build/**/*', 'build/.*'])
-    //     .pipe(rsync(options));
+    options.hostname = 'contexta04.nine.ch';
+    options.username = 'dev';
+    options.destination = '/home/dev/www/stage-app-rezepte/';
+
+    return gulp
+        .src(['build/**/*', 'build/.*'])
+        .pipe(rsync(options));
 });
 
 gulp.task('deploy-stage', ['build'], function () {
 
     options.hostname = 'contexta04.nine.ch';
     options.username = 'dev';
-    options.destination = '/home/dev/www/stage-app-fondue/';
+    options.destination = '/home/dev/www/stage-app-rezepte/';
 
     return gulp
         .src(['build/**/*', 'build/.*'])

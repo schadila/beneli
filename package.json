@@ -43,5 +43,8 @@
     "require-dir": "^0.3.0",
     "rss": "^1.2.1",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "sass-grid": "^2.0.3"
   }
 }

@@ -1,0 +1,121 @@
+@import "../_vars.scss";
+
+.grid-container{
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  margin-top: 100px;
+
+  .columns{
+    height: 300px;
+  }
+
+  .columns img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  span{
+    color: $white;
+    font-size: 1.2em;
+    font-family: Georgia, serif;
+    line-height: 1em;
+  }
+
+  .teaser-image{
+    position: relative;
+    height: auto;
+    margin-bottom: 10px;
+    transition: all .5s ease;
+    cursor: pointer;
+  }
+
+  .teaser-image .hover-state{
+    transition: all .5s ease;
+    position: absolute;
+    display: none;
+    width: 100%;
+    top: 38%;
+    text-align: center;
+    vertical-align: middle;
+    color: $red;
+    line-height: 1em;
+    font-size: 1.4em;
+  }
+  
+  .teaser-image.onhover .hover-state, .teaser-image.onclicked .hover-state{
+    display: block;
+  }
+
+  .teaser-image.onclicked::after{
+    background-image: url(../img/background/Like_hover.png);
+  }
+  .teaser-image:active .hover-state{
+    transform: scale(1.1);
+  }
+  .teaser-image.onclicked::before{
+    background-color: rgba(255, 255, 255, .8);
+    border: 1px solid $red;
+  }
+
+  .teaser-image:hover{
+    transform: scale(1.05);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.66);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.66);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.66);
+
+  }
+
+  .teaser-image::after{
+    transition: all .5s ease;
+    transform: scale(1);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: url(../img/background/Like.png);
+    background-repeat:no-repeat;
+    background-position: top right;
+  }
+
+  .teaser-image::before{
+    transition: all .5s ease;
+    content:"";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .teaser-image:hover::before{
+    background-color: rgba(255, 255, 255, .8);
+  }
+
+  .teaser-image:hover::after{
+    //background-image: url(../img/background/Like_hover.png);
+  }
+
+}
+
+@media only screen and (max-width: $mobile) {
+
+  .columns{
+    height: 230px!important;
+  }
+
+  .teaser-image{
+    height: 150px!important;
+    overflow: hidden;
+  }
+
+  .teaser-image img{
+    margin-top: -70px;
+  }
+}

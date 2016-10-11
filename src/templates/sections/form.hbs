@@ -1,0 +1,31 @@
+<div class="form">
+    <form class="sofortgewinn-form" id="sofortgewinn" onsubmit="javascript:return false">
+        <input type="radio" name="anrede" value="female" class="radio"/>
+        <label for="anrede" class="radio">[[modals.frau]]</label>
+        <input type="radio" name="anrede" value="male" class="radio"/>
+        <label for="anrede" class="radio">[[modals.herr]]</label>
+        <br><br>
+        <label for="vorname">[[modals.vorname]]:</label>
+        <input type="text" name="vorname" placeholder="[[modals.placeholder]]"/>
+        <label for="nachname">[[modals.nachname]]:</label>
+        <input type="text" name="nachname" placeholder="[[modals.placeholder]]"/>
+        <label for="strasse">[[modals.strasse]].</label>
+        <input type="text" name="strasse" placeholder="[[modals.placeholder]]"/>
+        <label for="zip">[[modals.zip]]/</label><label for="ort">[[modals.ort]]:</label>
+        <table>
+            <tr>
+                <td class="zip"><input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "4" minlength="4" name="zip" placeholder="[[modals.zip]]" /></td>
+                <td class="ort"><input type="text" name="ort" placeholder="[[modals.placeholder]]"/></td>
+            </tr>
+        </table>
+        <label for="email">[[modals.email]]:</label>
+        <input type="email" name="email" placeholder="[[modals.placeholderPhone]]"/>
+        <label for="phone">[[modals.phone]]:</label>
+        <input type="tel" name="phone" placeholder="[[modals.placeholderPhone]]"/>
+        <input type="hidden" name="language" value="[[index.locale]]">
+        <input type="hidden" name="code">
+        <br><br>
+        <p class="warning allfields sg">[[modals.allFields]]</p>
+        <p class="warning email sg">[[modals.emailVal]]</p>
+    </form>
+</div>

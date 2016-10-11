@@ -6,6 +6,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="APP-fondue-2016 node_modules" level="project" />
   </component>
 </module>
