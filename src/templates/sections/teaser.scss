@@ -1,0 +1,75 @@
+@import "../_vars.scss";
+
+#teaser {
+
+  &.teaser {
+    z-index: 1;
+    position: relative;
+    top: 72px;
+    width: 100%;
+    text-align: center;
+    padding: 0 0px 20px;
+
+    h1 {
+      color: $white;
+    }
+
+    p {
+      color: $white;
+
+    }
+
+    .header-image{
+      width: 100%;
+      height: 450px;
+      background-image: url(../img/modal/Teaser.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .teasers {
+      display: block;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 50px;
+      padding: 0 10px;
+
+      .TeaserText {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        letter-spacing: .05em;
+        font-size: 1em;
+        line-height: 1.5em;
+
+        &.code {
+          display: block;
+        }
+
+        &.game {
+          display: none;
+        }
+      }
+
+    }
+
+    .TeaserTitle {
+      margin-bottom: 20px;
+    }
+
+  }
+
+  @media only screen and (max-width: $mobile) {
+
+    .teasers{
+      padding: 0 20px!important;
+    }
+
+    .TeaserTitle {
+      font-size: 1.6em;
+      line-height: 1.3em;
+    }
+  }
+
+}

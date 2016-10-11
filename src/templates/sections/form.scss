@@ -1,7 +1,100 @@
+@import "../_vars.scss";
+
 .form{
 
   label{
     color: white;
+  }
+
+  input[type='text'],input[type='email'],input[type='tel'],input[type='number']{
+    width: 100%;
+    height: auto;
+    padding: 15px 20px;
+    border: 0px;
+    border: 1px solid rgba(0,0,0,0);
+
+    margin-bottom: 30px;
+  }
+
+
+
+  input:focus{
+    outline: none;
+    border: 1px solid $red;
+  }
+
+  table{
+    width: 100%;
+
+    td:first-child{
+      width: 30%;
+    }
+    td:last-child{
+      width: 70%;
+    }
+  }
+
+  button[type='submit']:focus{
+    outline: none;
+    border: 0px;
+  }
+
+  input[name='ort']{
+    margin-left: 4%;
+    width: 96%;
+  }
+
+  input[name='plz']{
+  }
+
+  button[type='submit'] {
+    text-transform: none;
+    font-family: Georgia, Arial;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 45px;
+    color: #fff;
+    display: inline-block;
+    width: auto;
+    padding: 0 10px 0 15px;
+    background-image: url(http://appenzeller.ch/themes/appenzeller/images/bg_button_medium.png);
+    }
+
+  button[type='submit']:hover{
+    color: $black;
+    font-weight: bold;
+  }
+
+  .button_handler {
+    float: right;
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin-left: 15px;
+    margin-top: 6px;
+    background-image: url(http://appenzeller.ch/themes/appenzeller/images/sprite_v4.png);
+    background-position: -336px -144px;
+  }
+
+  button[type='submit']:hover .button_handler {
+    background-position: -336px -192px;
+  }
+
+  .radio-section{
+    margin: 20px 0;
+  }
+
+  .radio-section input{
+    width: auto;
+    margin: 10px 10px 10px 0;
+  }
+
+  .radio-section input[type='text']{
+    width: 100%;
+  }
+
+  .radio-section label{
+    margin-right: 20px;
   }
 
 }

@@ -1,0 +1,59 @@
+{
+  "Headline1": "Teilnahmebedingungen.",
+  "Text1": "Teilnahmeberechtigt sind in der Schweiz und im Fürstentum Liechtenstein wohnhafte Personen. Von der Teilnahme ausgeschlossen sind Mitarbeitende der SO Appenzeller Käse GmbH und deren Angehörige sowie Mitarbeitende der beteiligten Agenturen und deren Angehörige.<br><br>Es besteht kein Kaufzwang: 1 Gratis-Gewinncode ist gegen einen adressierten und frankierten Antwortbriefumschlag an SO Appenzeller Käse GmbH, „Fonduepromo“, Poststrasse 12, Postfach 67, 9050 Appenzell erhältlich. Über den Wettbewerb wird keine Korrespondenz geführt. Der Rechtsweg sowie die Barauszahlung der Preise sind ausgeschlossen. Teilnahmeschluss ist der 28. Februar 2017.<br><br><b>Datensicherheit im Internet</b><br>Bitte beachten Sie, dass es sich beim World Wide Web um ein öffentlich zugängliches System handelt. Persönliche Informationen werden online freiwillig und auf eigenes Risiko erteilt. SO Appenzeller Käse GmbH lehnt jegliche Haftung für den Verlust Ihrer Daten oder für Missbrauch durch unbefugte Dritte ab.<br><br><b>Datenschutz</b><br>Der Datenschutz hat bei der SO Appenzeller Käse GmbH einen hohen Stellenwert und Personendaten werden streng vertraulich behandelt. Erhalten wir von Ihnen Daten via Internet, werden diese nicht an Dritte weitergegeben und nur für die gewünschten Zwecke genutzt.",
+
+  "Headline2": "Kein Gewinncode?",
+  "Text2": "Vom 1.10.2016 bis 31.12.2016 können Sie die Promotionsverpackungen inkl. Promotionscode in jeder grösseren Detailhändler-Filiale oder in unserem <a href='http://shop.appenzeller.ch/de_ch/fondue/appenzeller-fondue.html' target='_blank'>Onlineshop</a> kaufen. Ein Gratis-Gewinncode können Sie einmalig per Post bestellen. Vorfrankiertes Antwortkuvert einschicken an:<br><br> SO Appenzeller Käse GmbH<br>«Fonduepromo»<br>Poststrasse 12<br>Postfach 67<br>9050 Appenzell",
+
+  "Hauptpreis": "Hauptpreis",
+  "Sofortpreise": "Sofortpreise",
+  "Hauptpreis_text": "Ein 3'000 Franken Gutschein für Winterferien im Appenzellerland. Entdecken Sie das herrliche Panorama und die schneebedeckten, sanften Hügel – sei es beim Schneewandern, Wellness oder bei einem würzigen Appenzeller<sup>&reg;</sup> Fondue.",
+  "Sofortpreis_text_1": "100 x Appenzeller<sup>&reg;</sup> Fondue-Sets. Jedes Set umfasst zwei Packungen Appenzeller<sup>&reg;</sup> Fondue à 800g, Fondue-Tee, Brotkorb, Brotmesser, Servietten und Zündhölzer.",
+  "Sofortpreis_text_2": "30 x 4 Mini-Caquelons<br>für Kirschwasser",
+  "Sofortpreis_text_3": "30 x 6 original Appenzeller<sup>&reg;</sup><br>Fonduegabeln",
+  "Sofortpreis_text_4": "30 x ein traditionelles Käsebrett<br>aus Schweizer Ahorn FSC",
+  "Sofortpreis_text_5": "30 x ein Holzkochlöffel<br> mit Schweizerkreuz",
+  "Sofortpreis_text_6": "30 x ein 20%-Gutschein<br> für unseren Online-Shop",
+
+  "Headline4": "Wir gratulieren! ",
+  "Text4Fondue": "Hurra! Sie haben ein Appenzeller<sup>&reg;</sup> Fondue-Set gewonnen. Jetzt Adresse für den Versand eingeben und automatisch auch an der Hauptverlosung teilnehmen.",
+  "Text4Mini": "Hurra! Sie haben vier Kirsch-Caquelons gewonnen. Jetzt Adresse für den Versand eingeben und automatisch auch an der Hauptverlosung teilnehmen.",
+  "Text4Gabel": "Hurra! Sie haben 6 Appenzeller<sup>&reg;</sup> Fonduegabeln gewonnen. Jetzt Adresse für den Versand eingeben und automatisch auch an der Hauptverlosung teilnehmen.",
+  "Text4Brett": "Hurra! Sie haben ein Käsebrett gewonnen. Jetzt Adresse für den Versand eingeben und automatisch auch an der Hauptverlosung teilnehmen.",
+  "Text4Koch": "Hurra! Sie haben einen Holzkochlöffel gewonnen. Jetzt Adresse für den Versand eingeben und automatisch auch an der Hauptverlosung teilnehmen.",
+  "Text4Gutschein": "Hurra! Sie haben einen 20%-Gutschein für unseren Online-Shop gewonnen. Jetzt Adresse für den Versand eingeben und automatisch auch an der Hauptverlosung teilnehmen.",
+
+  "Headline5": "Hurra, Sie machen bei<br> der Hauptverlosung mit.",
+  "Text5": "Mit etwas Glück haben Sie jetzt die Chance auf Winterferien im Appenzellerland im Wert von CHF 3000.-. Sie brauchen bloss Ihre Adresse einzugeben, um an der Hauptgewinn-Verlosung teilzunehmen.",
+
+  "Headline6": "Sind diese Angaben korrekt?",
+  "Text6": "",
+
+  "Headline8": "Adresse gespeichert.<br>Danke fürs Mitmachen, ",
+  "Text8": "Ihr Sofortpreis wird Ihnen innert 14 Tagen an untenstehende Adresse zugeschickt. Ausserdem nehmen Sie automatisch an der Hauptverlosung von Winterferien im Appenzellerland im Wert von CHF 3000.- teil.",
+
+  "Headline9": "Teilnahme gespeichert.<br>Viel Glück, ",
+  "Text9": "Herzlichen Dank fürs Mitmachen. Falls Sie bei der Hauptverlosung Winterferien im Appenzellerland im Wert von CHF 3000.- gewinnen, werden wir Sie kontaktieren.",
+
+  "placeholder": "",
+  "placeholderPhone": "Falls wir Rückfragen zur Lieferung haben",
+  "placeholderEmail": "Nur zur Gewinnbenachrichtigung verwendet",
+  "anrede": "Anrede",
+  "herr": "Herr",
+  "frau": "Frau",
+  "name": "Name",
+  "vorname": "Vorname",
+  "nachname": "Nachname",
+  "strasse": "Strasse",
+  "zip": "PLZ",
+  "ort": "Ort",
+  "email": "E-Mail",
+  "phone": "Telefon",
+  "submit": "Abschliessen",
+  "join": "Teilnehmen",
+  "next": "Weiter",
+  "home": "Zurück zur Startseite",
+  "correct": "Vertippt? Angaben korrigieren",
+  "allFields": "Bitte füllen Sie alle Felder aus.",
+  "emailVal": "Bitte gib eine gültige E-Mail Adresse an."
+}

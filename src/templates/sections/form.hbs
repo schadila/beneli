@@ -1,10 +1,13 @@
-<div class="form">
+<div class="form container">
     <form class="sofortgewinn-form" id="sofortgewinn" onsubmit="javascript:return false">
-        <input type="radio" name="anrede" value="female" class="radio"/>
-        <label for="anrede" class="radio">[[modals.frau]]</label>
-        <input type="radio" name="anrede" value="male" class="radio"/>
-        <label for="anrede" class="radio">[[modals.herr]]</label>
         <br><br>
+        <label>Füllen Sie das untenstehende Formular aus, um am Gewinnspiel teilzunehmen.</label>
+        <section class="radio-section">
+            <input type="radio" name="anrede" value="female" id="anrede_f" class="radio"/>
+            <label for="anrede_f" class="radio">[[modals.frau]]</label>
+            <input type="radio" id="anrede_m" name="anrede" value="male" class="radio"/>
+            <label for="anrede_m" class="radio">[[modals.herr]]</label>
+        </section>
         <label for="vorname">[[modals.vorname]]:</label>
         <input type="text" name="vorname" placeholder="[[modals.placeholder]]"/>
         <label for="nachname">[[modals.nachname]]:</label>
@@ -18,14 +21,27 @@
                 <td class="ort"><input type="text" name="ort" placeholder="[[modals.placeholder]]"/></td>
             </tr>
         </table>
+        <label for="country">Land*:</label>
+        <input type="text" placeholder="[[modals.placeholder]]" name="country">
         <label for="email">[[modals.email]]:</label>
-        <input type="email" name="email" placeholder="[[modals.placeholderPhone]]"/>
-        <label for="phone">[[modals.phone]]:</label>
-        <input type="tel" name="phone" placeholder="[[modals.placeholderPhone]]"/>
-        <input type="hidden" name="language" value="[[index.locale]]">
-        <input type="hidden" name="code">
+        <input type="email" name="email" placeholder="[[modals.placeholder]]"/>
         <br><br>
-        <p class="warning allfields sg">[[modals.allFields]]</p>
-        <p class="warning email sg">[[modals.emailVal]]</p>
+        <label for="platform">Wie wurden Sie auf den Wettbewerb aufmerksam?</label>
+        <section class="radio-section">
+            <input type="radio" name="platform" id="rezeptaktion"><label for="rezeptaktion">Rezeptaktion an der Käsetheke</label><br>
+            <input type="text" name="platform_rezeptaktion" placeholder="Bitte Markname und Ort eintragen"><br>
+            <input type="radio" name="platform" id="gewinnspiel"><label for="gewinnspiel">Gewinnspiel-Portal</label><br>
+            <input type="radio" name="platform" id="website"><label for="website">Website Schweizer Käse</label><br>
+            <input type="radio" name="platform" id="newsletter"><label for="newsletter">Newsletter</label><br>
+            <input type="radio" name="platform" id="freunde"><label for="freunde">Freunde</label><br>
+            <input type="radio" name="platform" id="anderes"><label for="anderes">Anderes</label><br>
+            <input type="text" name="platform_anderes">
+        </section>
+        <input type="hidden" name="language" value="[[index.locale]]">
+        <input type="hidden" name="rezept">
+        <br><br>
+        <!--<p class="warning allfields sg">[[modals.allFields]]</p>-->
+        <!--<p class="warning email sg">[[modals.emailVal]]</p>-->
+        <button type="submit" value=""><span class="button_handler"><!-- --></span>Jetzt teilnehmen</button>
     </form>
 </div>
