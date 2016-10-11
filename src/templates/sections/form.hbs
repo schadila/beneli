@@ -8,35 +8,44 @@
             <input type="radio" id="anrede_m" name="anrede" value="male" class="radio"/>
             <label for="anrede_m" class="radio">[[modals.herr]]</label>
         </section>
-        <label for="vorname">[[modals.vorname]]:</label>
+        <label for="vorname">[[modals.vorname]]*:</label>
         <input type="text" name="vorname" placeholder="[[modals.placeholder]]"/>
-        <label for="nachname">[[modals.nachname]]:</label>
+        <label for="nachname">[[modals.nachname]]*:</label>
         <input type="text" name="nachname" placeholder="[[modals.placeholder]]"/>
-        <label for="strasse">[[modals.strasse]].</label>
-        <input type="text" name="strasse" placeholder="[[modals.placeholder]]"/>
-        <label for="zip">[[modals.zip]]/</label><label for="ort">[[modals.ort]]:</label>
+        <!--<label for="strasse">[[modals.strasse]].</label>-->
+        <!--<input type="text" name="strasse" placeholder="[[modals.placeholder]]"/>-->
+        <label for="zip">[[modals.zip]]/</label><label for="ort">[[modals.ort]]*:</label>
         <table>
             <tr>
-                <td class="zip"><input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "4" minlength="4" name="zip" placeholder="[[modals.zip]]" /></td>
+                <td class="zip"><input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" minlength="5" name="zip" placeholder="[[modals.zip]]" /></td>
                 <td class="ort"><input type="text" name="ort" placeholder="[[modals.placeholder]]"/></td>
             </tr>
         </table>
         <label for="country">Land*:</label>
         <input type="text" placeholder="[[modals.placeholder]]" name="country">
-        <label for="email">[[modals.email]]:</label>
+        <label for="email">[[modals.email]]*:</label>
         <input type="email" name="email" placeholder="[[modals.placeholder]]"/>
         <br><br>
-        <label for="platform">Wie wurden Sie auf den Wettbewerb aufmerksam?</label>
+        <label for="platform">Wie wurden Sie auf den Wettbewerb aufmerksam?*</label>
         <section class="radio-section">
             <input type="radio" name="platform" id="rezeptaktion"><label for="rezeptaktion">Rezeptaktion an der Käsetheke</label><br>
-            <input type="text" name="platform_rezeptaktion" placeholder="Bitte Markname und Ort eintragen"><br>
+            <input type="text" name="platform_anderes" class="moretext rezeptaktion" placeholder="Bitte Markname und Ort eintragen"><br class="moretext">
             <input type="radio" name="platform" id="gewinnspiel"><label for="gewinnspiel">Gewinnspiel-Portal</label><br>
             <input type="radio" name="platform" id="website"><label for="website">Website Schweizer Käse</label><br>
             <input type="radio" name="platform" id="newsletter"><label for="newsletter">Newsletter</label><br>
             <input type="radio" name="platform" id="freunde"><label for="freunde">Freunde</label><br>
             <input type="radio" name="platform" id="anderes"><label for="anderes">Anderes</label><br>
-            <input type="text" name="platform_anderes">
+            <input type="text" name="platform_anderes" class="moretext anderes">
         </section>
+        <!--<select>-->
+            <!--<option name="platform" id="rezeptaktion">Rezeptaktion an der Käsetheke</option>-->
+            <!--<option name="platform" id="gewinnspiel">Gewinnspiel-Portal</option>-->
+            <!--<option name="platform" id="website">Website Schweizer Käse</option>-->
+            <!--<option name="platform" id="newsletter">Newsletter</option>-->
+            <!--<option name="platform" id="freunde">Freunde</option>-->
+            <!--<option name="platform" id="anderes">Anderes</option>-->
+        <!--</select>-->
+        <!--<input type="text" id="anderes" name="platform_anderes">-->
         <input type="hidden" name="language" value="[[index.locale]]">
         <input type="hidden" name="rezept">
         <br><br>

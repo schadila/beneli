@@ -80,3 +80,19 @@ $(".teaser-image").on('click', function(){
     console.log(selectedRecept);
     navigator.vibrate(200);
 });
+
+$(".radio-section input").not(this).click(function(){
+    $(".rezeptaktion").fadeOut(0);
+    $(".anderes").fadeOut(0);
+});
+
+$("input#rezeptaktion").click(function(){
+   $(".rezeptaktion").fadeIn(0);
+    $(".anderes").fadeOut(0);
+});
+
+$("input#anderes").click(function(){
+   $(".rezeptaktion").fadeOut(0);
+    $(".anderes").fadeIn(0);
+});
+

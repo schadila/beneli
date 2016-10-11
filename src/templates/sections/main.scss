@@ -52,8 +52,9 @@
     background-image: url(../img/background/Like_hover.png);
   }
   .teaser-image:active .hover-state{
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
+
   .teaser-image.onclicked::before{
     background-color: rgba(255, 255, 255, .8);
     border: 1px solid $red;
@@ -64,7 +65,10 @@
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.66);
     -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.66);
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.66);
+  }
 
+  .teaser-image:active{
+    transform: scale(1.1);
   }
 
   .teaser-image::after{
