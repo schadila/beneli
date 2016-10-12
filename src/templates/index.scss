@@ -6,6 +6,9 @@ body {
   font-size: 18px !important;
   letter-spacing: 1.5pt !important;
   overflow-x: hidden;
+  background-image: url(../img/background/holz_800x800.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 
   > .ui.grid {
     margin: 0;

@@ -4,9 +4,9 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: #333333;
   background-image: url(../img/background/holz_800x800.jpg);
-  z-index: -2;
+  background-size: cover;
+  z-index: 0;
 
   .fondue-asset {
     position: absolute;

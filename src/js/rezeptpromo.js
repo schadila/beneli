@@ -1,12 +1,17 @@
 stickyFooter();
+agbPosition();
+
 $(document).ready(function () {
     if (Function('/*@cc_on return document.documentMode===10@*/')()) {
         $("input").addClass("ie10");
     }
+    fixedHeaderImage()
 });
 
 $(window).resize(function () {
     stickyFooter();
+    agbPosition();
+    fixedHeaderImage();
 });
 
 
@@ -81,7 +86,7 @@ $(".teaser-image").on('click', function(){
     navigator.vibrate(200);
 });
 
-$(".radio-section input").not(this).click(function(){
+$(".radio-section.platform input[type='radio']").not(this).click(function(){
     $(".rezeptaktion").fadeOut(0);
     $(".anderes").fadeOut(0);
 });
@@ -96,3 +101,33 @@ $("input#anderes").click(function(){
     $(".anderes").fadeIn(0);
 });
 
+function agbPosition(){
+    var paddingLeft = parseInt($(".form.container").css("margin-left"), 10) + parseInt($(".grid-container").css("margin-left"), 10);
+    console.log(paddingLeft);
+    $(".agbs").width($(window).width());
+    $(".agbs").css("margin-left", "-"+paddingLeft+"px");
+}
+
+function showAGB(){
+    $(".agbs").slideDown(100);
+    $(".agbs").addClass("showagb");
+
+}
+
+function hideAGB(){
+    $(".agbs").slideUp(100);
+    $(".agbs").removeClass("showagb");
+}
+
+$("input[type='text'], input[type='number'], input[type='email']").on('focus keydown blur', function(){
+    if($(this).val() != ""){
+        $(this).addClass("valide");
+    }else{
+        $(this).removeClass("valide");
+    }
+});
+
+function fixedHeaderImage(){
+    var position = $(window).width()*.4;
+    $(".header-image").css("background-position", "0 -"+position+"px");
+}

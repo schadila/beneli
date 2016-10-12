@@ -11,9 +11,12 @@
     height: auto;
     padding: 15px 20px;
     border: 0px;
-    border: 1px solid rgba(0,0,0,0);
-
+    border-left: 5px solid $red;
     margin-bottom: 30px;
+  }
+
+  input[type='text'].valide,input[type='email'].valide,input[type='tel'].valide,input[type='number'].valide{
+    border-left: 5px solid green;
   }
 
   .moretext{
@@ -22,7 +25,7 @@
 
   input:focus{
     outline: none;
-    border: 1px solid $red;
+    //border: 1px solid $red;
   }
 
   table{
@@ -49,12 +52,15 @@
   input[name='plz']{
   }
 
+
+
   button[type='submit'] {
     text-transform: none;
     font-family: Georgia, Arial;
     font-size: 20px;
     font-weight: bold;
     line-height: 45px;
+    letter-spacing: 0px;
     color: #fff;
     display: inline-block;
     width: auto;
@@ -91,6 +97,22 @@
     margin: 10px 10px 10px 0;
   }
 
+  .checkbox-section{
+    display: block;
+  }
+
+  .checkbox-section input[type='checkbox']{
+    width: auto;
+    margin: 10px 15px 30px 0;
+    float: left;
+  }
+
+  .checkbox-section label {
+    display: block;
+    line-height: 1.6em;
+    padding-top:3px;
+  }
+
   .radio-section input[type='text']{
     width: 100%;
   }
@@ -99,4 +121,130 @@
     margin-right: 20px;
   }
 
+  .agbs{
+    transition: all .2s ease;
+    display: none;
+    background-color: rgba(0,0,0,.4);
+    color: #ddd;
+    padding: 20px 0px 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+
+    -moz-box-shadow:    inset 0 0 100px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 100px #000000;
+
+    h4{
+      font-size: 1.4em!important;
+      letter-spacing: 0.01em;
+    }
+    h5{
+      font-size: 18px!important;
+      letter-spacing: 0px;
+      margin-bottom: 0px;
+    }
+
+    p{
+      line-height: 1.4em;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h4, p, h5{
+      padding: 0 100px;
+    }
+
+    /*&.showagb{
+      display: block;
+      opacity: 1;
+    }*/
+    
+    .agb_close{
+      display: block;
+      position: absolute;
+      right: 0;
+      width: 30px;
+      height: 30px;
+      margin-top: 20px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  input[type='text'].required, input[type='number'].required, input[type='email'].required{
+    border: 3px solid $red!important;
+  }
+
+  .radio-section.required input[type='radio'] + label{
+    color: $red;
+  }
+
+  input[type='checkbox'].required + label{
+    color: $red!important;
+  }
+
+}
+
+@media only screen and (max-width: $mobile) {
+
+  input{
+    border-radius: 0px;
+  }
+
+  input[type='radio']{
+    display: none;
+  }
+
+  input[type="radio"] + label{
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    border-bottom: 1px solid $red;
+    border-left: 1px solid $red;
+    border-right: 1px solid $red;
+  }
+
+  .radio-section{
+    border-top: 1px solid $red;
+  }
+
+  input[type="radio"] + label + br{
+    display: none;
+  }
+
+  input[type='radio']#anrede_f +label, input[type='radio']#anrede_m +label{
+    width: 50%;
+    margin-right: 0px;
+    float: left;
+    margin-bottom: 20px;
+    padding: 12px 20px;
+  }
+
+  input[type='radio']#anrede_f +label{
+  border-right: 0px;
+  }
+
+
+  input[type="radio"]:checked + label{
+    background-image: url(http://appenzeller.ch/themes/appenzeller/images/bg_button_medium.png);
+  }
+
+  input[type='text'],input[type='email'],input[type='tel'],input[type='number']{
+    margin-bottom: 20px!important;
+    padding: 10px 15px!important;
+  }
+
+  .checkbox-section input[type='checkbox']{
+    margin-bottom: 60px!important;
+  }
+
+  .agbs{
+    h4, p, h5{
+      padding: 0 30px!important;
+    }
+
+  }
 }
