@@ -1,40 +1,40 @@
-<div class="form container">
+<div class="form container" id="form">
     <form class="sofortgewinn-form" id="sofortgewinn" onsubmit="javascript:return false">
         <br><br>
         <label>Füllen Sie das untenstehende Formular aus, um am Gewinnspiel teilzunehmen.</label>
-        <section class="radio-section ">
-            <input type="radio" name="anrede" value="female" id="anrede_f" class="radio"/>
+        <section class="radio-section">
+            <input type="radio" name="anrede" value="female" id="anrede_f" class="radio required"/>
             <label for="anrede_f" class="radio">[[modals.frau]]</label>
-            <input type="radio" id="anrede_m" name="anrede" value="male" class="radio"/>
+            <input type="radio" id="anrede_m" name="anrede" value="male" class="radio required"/>
             <label for="anrede_m" class="radio">[[modals.herr]]</label>
         </section>
         <label for="vorname">[[modals.vorname]]:</label>
-        <input type="text" name="vorname" class="" placeholder="[[modals.placeholder]]"/>
+        <input type="text" name="vorname" class="required" placeholder="[[modals.placeholder]]"/>
         <label for="nachname">[[modals.nachname]]:</label>
-        <input type="text" name="nachname" class="" placeholder="[[modals.placeholder]]"/>
+        <input type="text" name="nachname" class="required" placeholder="[[modals.placeholder]]"/>
         <!--<label for="strasse">[[modals.strasse]].</label>-->
         <!--<input type="text" name="strasse" placeholder="[[modals.placeholder]]"/>-->
         <label for="zip">[[modals.zip]]/</label><label for="ort">[[modals.ort]]:</label>
         <table>
             <tr>
-                <td class="zip"><input type="number" class="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" minlength="5" name="zip" placeholder="[[modals.zip]]" /></td>
-                <td class="ort"><input type="text" class="" name="ort" placeholder="[[modals.placeholder]]"/></td>
+                <td class="zip"><input type="number" class="required" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "5" minlength="5" name="zip" placeholder="[[modals.zip]]" /></td>
+                <td class="ort"><input type="text" class="required" name="ort" placeholder="[[modals.placeholder]]"/></td>
             </tr>
         </table>
         <label for="country">Land:</label>
-        <input type="text" class="" placeholder="[[modals.placeholder]]" name="country">
+        <input type="text" class=" required" placeholder="[[modals.placeholder]]" name="country">
         <label for="email">[[modals.email]]:</label>
-        <input type="email" class="" name="email" placeholder="[[modals.placeholder]]"/>
+        <input type="email" class=" required" name="email" placeholder="[[modals.placeholder]]"/>
         <br><br>
         <label for="platform">Wie wurden Sie auf den Wettbewerb aufmerksam?</label>
         <section class="radio-section platform">
-            <input type="radio" name="platform" id="rezeptaktion" value="rezeptaktion"><label for="rezeptaktion">Rezeptaktion an der Käsetheke</label><br>
-            <input type="text" name="platform_platform" class="moretext rezeptaktion" placeholder="Bitte Markname und Ort eintragen"><br class="moretext">
-            <input type="radio" name="platform" id="gewinnspiel" value="gewinnspiel"><label for="gewinnspiel">Gewinnspiel-Portal</label><br>
-            <input type="radio" name="platform" id="website" value="website"><label for="website">Website Schweizer Käse</label><br>
-            <input type="radio" name="platform" id="newsletter" value="newsletter"><label for="newsletter">Newsletter</label><br>
-            <input type="radio" name="platform" id="freunde" value="freunde"><label for="freunde">Freunde</label><br>
-            <input type="radio" name="platform" id="anderes" value="anderes"><label for="anderes">Anderes</label><br>
+            <input type="radio" name="platform" id="rezeptaktion" value="Rezeptaktion:"><label for="rezeptaktion">Rezeptaktion an der Käsetheke</label><br>
+            <input type="text" name="platform_rezeptaktion" class="moretext rezeptaktion" placeholder="Bitte Markname und Ort eintragen"><br class="moretext">
+            <input type="radio" name="platform" id="gewinnspiel" value="Gewinnspiel-Portal"><label for="gewinnspiel">Gewinnspiel-Portal</label><br>
+            <input type="radio" name="platform" id="website" value="Website Schweizer Käse"><label for="website">Website Schweizer Käse</label><br>
+            <input type="radio" name="platform" id="newsletter" value="Newsletter"><label for="newsletter">Newsletter</label><br>
+            <input type="radio" name="platform" id="freunde" value="Freunde"><label for="freunde">Freunde</label><br>
+            <input type="radio" name="platform" id="anderes" value="Anderes:"><label for="anderes">Anderes</label><br>
             <input type="text" name="platform_anderes" class="moretext anderes">
         </section>
         <!--<select>-->
@@ -68,14 +68,22 @@
             </p>
         </section>
         <section class="checkbox-section">
-            <input type="checkbox" name="agb" id="agb"><label for="agb">Ich habe die <a class="agb_show" href="javascript:showAGB()">Teilnahmebedingungen</a> gelesen und akzeptiere sie mit dieser Bestätigung.</label>
+            <input type="checkbox" name="agb" id="agb" class="required"><label for="agb">Ich habe die <a class="agb_show" href="javascript:showAGB()">Teilnahmebedingungen</a> gelesen und akzeptiere sie mit dieser Bestätigung.</label>
             <br><input type="checkbox" name="newsletter_abo" id="newsletter_abo"><label for="newsletter_abo">Ich möchte den E-Mail-Newsletter von Schweizer Käse abonnieren.</label>
         </section>
         <input type="hidden" name="language" value="[[index.locale]]">
         <input type="hidden" name="rezept">
-        <br><br>
+        <br>
+        <section class="errors">
+            <p class="error error0">- Bitte füllen Sie alle rot markierten Felder aus.</p>
+            <p class="error error1">- Wähle Sie ein Rezept aus.</p>
+            <p class="error error2">- Akzeptiere Sie die Teilnahmebedingungen.</p>
+            <p class="error error3">- Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+        </section>
+        <br>
         <!--<p class="warning allfields sg">[[modals.allFields]]</p>-->
         <!--<p class="warning email sg">[[modals.emailVal]]</p>-->
-        <button type="submit" value=""><span class="button_handler"><!-- --></span>Jetzt teilnehmen</button>
+        <button type="submit" class="submit" value=""><span class="button_handler"><!-- --></span>Jetzt teilnehmen</button>
     </form>
+
 </div>

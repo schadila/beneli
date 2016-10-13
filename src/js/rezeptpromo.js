@@ -21,6 +21,10 @@ function is_touch_device() {
     || (navigator.msMaxTouchPoints > 0));
 }
 
+function fixedHeaderImage(){
+    var position = $(window).width()*.4;
+    $(".header-image").css("background-position", "0 -"+position+"px");
+}
 
 function stickyFooter() {
     var $footer = $(".footer");
@@ -83,27 +87,35 @@ $(".teaser-image").on('click', function(){
     $(this).stop().addClass("onclicked");
     selectedRecept = $(this).data("index");
     console.log(selectedRecept);
+    $("input[name='rezept']").val(selectedRecept);
     navigator.vibrate(200);
 });
 
 $(".radio-section.platform input[type='radio']").not(this).click(function(){
     $(".rezeptaktion").fadeOut(0);
     $(".anderes").fadeOut(0);
+    $("input[name='platform_anderes']").removeClass("required");
+    $("input[name='platform_rezeptaktion']").removeClass("required");
+    $("input[name='platform_anderes']").removeClass("valide");
+    $("input[name='platform_rezeptaktion']").removeClass("valide");
 });
 
 $("input#rezeptaktion").click(function(){
-   $(".rezeptaktion").fadeIn(0);
+    $("input[name='platform_anderes']").removeClass("required");
+    $("input[name='platform_rezeptaktion']").addClass("required");
+    $(".rezeptaktion").fadeIn(0);
     $(".anderes").fadeOut(0);
 });
 
 $("input#anderes").click(function(){
-   $(".rezeptaktion").fadeOut(0);
+    $("input[name='platform_rezeptaktion']").removeClass("required");
+    $("input[name='platform_anderes']").addClass("required");
+    $(".rezeptaktion").fadeOut(0);
     $(".anderes").fadeIn(0);
 });
 
 function agbPosition(){
     var paddingLeft = parseInt($(".form.container").css("margin-left"), 10) + parseInt($(".grid-container").css("margin-left"), 10);
-    console.log(paddingLeft);
     $(".agbs").width($(window).width());
     $(".agbs").css("margin-left", "-"+paddingLeft+"px");
 }
@@ -119,15 +131,3 @@ function hideAGB(){
     $(".agbs").removeClass("showagb");
 }
 
-$("input[type='text'], input[type='number'], input[type='email']").on('focus keydown blur', function(){
-    if($(this).val() != ""){
-        $(this).addClass("valide");
-    }else{
-        $(this).removeClass("valide");
-    }
-});
-
-function fixedHeaderImage(){
-    var position = $(window).width()*.4;
-    $(".header-image").css("background-position", "0 -"+position+"px");
-}

@@ -2,6 +2,13 @@
 
 .form{
 
+
+  .error{
+    color: $red;
+    font-weight: bold;
+    display: none;
+  }
+
   label{
     color: white;
   }
@@ -11,7 +18,6 @@
     height: auto;
     padding: 15px 20px;
     border: 0px;
-    border-left: 5px solid $red;
     margin-bottom: 30px;
   }
 
@@ -175,14 +181,14 @@
   }
 
   input[type='text'].required, input[type='number'].required, input[type='email'].required{
-    border: 3px solid $red!important;
+    border-left: 5px solid $red;
   }
 
   .radio-section.required input[type='radio'] + label{
     color: $red;
   }
 
-  input[type='checkbox'].required + label{
+  input[type='checkbox'].required + label, input[type='radio'].required + label{
     color: $red!important;
   }
 
