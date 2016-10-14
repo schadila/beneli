@@ -12,7 +12,7 @@ $("input[name='anrede']").click(function(){
    $("input[name='anrede']").removeClass("required");
 });
 
-$(".submit").click(function(){
+$(".submit.sendForm").click(function(){
 
     var inputRezeptaktion = $("input[name='platform_rezeptaktion']").val();
     if(inputRezeptaktion){$("input[id='rezeptaktion']").val("Rezeptaktion: "+inputRezeptaktion)}
@@ -74,5 +74,26 @@ $(".submit").click(function(){
     if(isValid==true && error1 == false && error2 == false && emailValide == true){
         formValid = true;
     }
-    console.log(formValid);
+
+    if(formValid==true){
+        formSent();
+    }
 });
+
+var i = 0;
+
+function formSent(){
+    if(i==0){
+        $(".grid-container").fadeOut(0);
+        $(".teasers.notdone").fadeOut(0);
+        $(".teasers.done").fadeIn(0);
+        var anrede = $("input[name='anrede']:checked").val();
+        if(anrede == "female"){anrede = "Frau";}else{anrede="Herr"}
+        var nachname = $("input[name='nachname']").val();
+        console.log(anrede + " "+ nachname);
+        $(".done .TeaserTitle").append(anrede + " " + nachname +".");
+        stickyFooter();
+    }
+
+    i = 1;
+}

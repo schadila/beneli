@@ -30,7 +30,7 @@ function stickyFooter() {
     var $footer = $(".footer");
     var windowHeight = $(window).outerHeight();
     var contentHeight = $("body").outerHeight();
-    var footerHeight = $footer.outerHeight() + 100;
+    var footerHeight = $footer.outerHeight() + 0;
     if ((windowHeight - footerHeight) >= contentHeight) {
         $footer.addClass("fixed");
     } else {
@@ -85,6 +85,7 @@ var selectedRecept = 0;
 $(".teaser-image").on('click', function(){
     $(".teaser-image").removeClass("onclicked");
     $(this).stop().addClass("onclicked");
+    showGoToBottom();
     selectedRecept = $(this).data("index");
     console.log(selectedRecept);
     $("input[name='rezept']").val(selectedRecept);
@@ -94,6 +95,7 @@ $(".teaser-image").on('click', function(){
 $(".radio-section.platform input[type='radio']").not(this).click(function(){
     $(".rezeptaktion").fadeOut(0);
     $(".anderes").fadeOut(0);
+    $(".required_platform").removeClass("required_platform");
     $("input[name='platform_anderes']").removeClass("required");
     $("input[name='platform_rezeptaktion']").removeClass("required");
     $("input[name='platform_anderes']").removeClass("valide");
@@ -116,8 +118,8 @@ $("input#anderes").click(function(){
 
 function agbPosition(){
     var paddingLeft = parseInt($(".form.container").css("margin-left"), 10) + parseInt($(".grid-container").css("margin-left"), 10);
-    $(".agbs").width($(window).width());
-    $(".agbs").css("margin-left", "-"+paddingLeft+"px");
+    $(".agbs, .sticky-button").width($(window).width());
+    $(".agbs, .sticky-button").css("margin-left", "-"+paddingLeft+"px");
 }
 
 function showAGB(){
@@ -131,3 +133,23 @@ function hideAGB(){
     $(".agbs").removeClass("showagb");
 }
 
+function showGoToBottom(){
+    showHideButton();
+
+    $(window).scroll(function(){
+        showHideButton();
+    });
+}
+
+function showHideButton(){
+    if($(window).scrollTop() > ($('.form').position().top-600)){
+        $(".sticky-goto-bottom-button").fadeOut(200);
+    }else{
+        $(".sticky-goto-bottom-button").fadeIn(200);
+    }
+}
+
+
+function goToForm(){
+    $("html, body").animate({ scrollTop: $('.form').position().top }, "slow");
+}

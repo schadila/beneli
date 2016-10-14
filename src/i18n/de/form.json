@@ -1,0 +1,10 @@
+{
+  "formTeaser": "Füllen Sie das untenstehende Formular aus, um am Gewinnspiel teilzunehmen.",
+  "allFields": "Bitte füllen Sie alle rot markierten Felder aus.",
+  "emailVal": "Bitte geben Sie eine gültige E-Mail Adresse an.",
+  "acceptAGB": "Akzeptiere Sie die Teilnahmebedingungen.",
+  "selectRecipe": "Wählen Sie ein Rezept aus.",
+  "submit": "Jetzt teilnehmen",
+  "newsletter": "Ich möchte den E-Mail-Newsletter von Schweizer Käse abonnieren.",
+  "agb": "Ich habe die <a class='agb_show' href='javascript:showAGB()'>Teilnahmebedingungen</a> gelesen und akzeptiere sie mit dieser Bestätigung."
+}

@@ -1,7 +1,7 @@
 <div class="form container" id="form">
     <form class="sofortgewinn-form" id="sofortgewinn" onsubmit="javascript:return false">
         <br><br>
-        <label>Füllen Sie das untenstehende Formular aus, um am Gewinnspiel teilzunehmen.</label>
+        <label>[[form.formTeaser]]</label>
         <section class="radio-section">
             <input type="radio" name="anrede" value="female" id="anrede_f" class="radio required"/>
             <label for="anrede_f" class="radio">[[modals.frau]]</label>
@@ -26,7 +26,7 @@
         <label for="email">[[modals.email]]:</label>
         <input type="email" class=" required" name="email" placeholder="[[modals.placeholder]]"/>
         <br><br>
-        <label for="platform">Wie wurden Sie auf den Wettbewerb aufmerksam?</label>
+        <label for="platform" class="required_platform">Wie wurden Sie auf den Wettbewerb aufmerksam?</label>
         <section class="radio-section platform">
             <input type="radio" name="platform" id="rezeptaktion" value="Rezeptaktion:"><label for="rezeptaktion">Rezeptaktion an der Käsetheke</label><br>
             <input type="text" name="platform_rezeptaktion" class="moretext rezeptaktion" placeholder="Bitte Markname und Ort eintragen"><br class="moretext">
@@ -68,22 +68,22 @@
             </p>
         </section>
         <section class="checkbox-section">
-            <input type="checkbox" name="agb" id="agb" class="required"><label for="agb">Ich habe die <a class="agb_show" href="javascript:showAGB()">Teilnahmebedingungen</a> gelesen und akzeptiere sie mit dieser Bestätigung.</label>
-            <br><input type="checkbox" name="newsletter_abo" id="newsletter_abo"><label for="newsletter_abo">Ich möchte den E-Mail-Newsletter von Schweizer Käse abonnieren.</label>
+            <input type="checkbox" name="agb" id="agb" class="required"><label for="agb">[[form.agb]]</label>
+            <br><input type="checkbox" name="newsletter_abo" id="newsletter_abo"><label for="newsletter_abo">[[form.newsletter]]</label>
         </section>
         <input type="hidden" name="language" value="[[index.locale]]">
         <input type="hidden" name="rezept">
         <br>
         <section class="errors">
-            <p class="error error0">- Bitte füllen Sie alle rot markierten Felder aus.</p>
-            <p class="error error1">- Wähle Sie ein Rezept aus.</p>
-            <p class="error error2">- Akzeptiere Sie die Teilnahmebedingungen.</p>
-            <p class="error error3">- Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+            <p class="error error0">- [[form.allFields]]</p>
+            <p class="error error1">- [[form.selectRecipe]]</p>
+            <p class="error error2">- [[form.acceptAGB]]</p>
+            <p class="error error3">- [[form.emailVal]]</p>
         </section>
         <br>
         <!--<p class="warning allfields sg">[[modals.allFields]]</p>-->
         <!--<p class="warning email sg">[[modals.emailVal]]</p>-->
-        <button type="submit" class="submit" value=""><span class="button_handler"><!-- --></span>Jetzt teilnehmen</button>
+        <button type="submit" class="submit sendForm" value=""><span class="button_handler"><!-- --></span>[[form.submit]]</button>
     </form>
 
 </div>
