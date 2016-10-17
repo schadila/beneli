@@ -1,4 +1,4 @@
-if(!is_touch_device()){
+if(!is_touch_device){
     $(".teaser-image").hover(function(){
         $(this).stop().addClass("onhover");
     }, function(){
@@ -6,9 +6,25 @@ if(!is_touch_device()){
     });
 }
 
-function is_touch_device() {
-    return 'ontouchstart' in window        // works on most browsers
-        || 'onmsgesturechange' in window;  // works on IE10 with some false positives
+var is_touch_device = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
 };
 
 var selectedRecept = 0;
