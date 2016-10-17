@@ -5,7 +5,7 @@ date_default_timezone_set('UTC');
  * PUBLIC API ENDPOINTS
  */
 $app->get('/likes', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
-    $likes = DB::query("SELECT rezept, COUNT(*)*1100 as likes FROM likes GROUP BY rezept");
+    $likes = DB::query('SELECT rezept, COUNT(*)*1100 as likes FROM likes GROUP BY rezept');
     foreach ($likes as &$like) {
         $like['likes'] = humanize($like['likes']);
     }
@@ -13,11 +13,11 @@ $app->get('/likes', function (\Symfony\Component\HttpFoundation\Request $req) us
 });
 
 /**
- * "likes" a recipe, updates "like" if fingerprint has already voted
+ * 'likes' a recipe, updates 'like' if fingerprint has already voted
  */
 $app->post('/like', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
-    $fingerprint = $req->get("fingerprint");
-    $rezept = $req->get("rezept");
+    $fingerprint = $req->get('fingerprint');
+    $rezept = $req->get('rezept');
 
     $res = DB::insertUpdate('likes', ['fingerprint' => $fingerprint, 'rezept' => $rezept]);
     $response = ['success' => $res];
@@ -29,19 +29,24 @@ $app->post('/like', function (\Symfony\Component\HttpFoundation\Request $req) us
  * inserts user infos into db
  */
 $app->post('/teilnehmen', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
-    $fingerprint = $req->get("fingerprint");
+    $fingerprint = $req->get('fingerprint');
 
     $res = DB::insertUpdate('teilnehmer',
         [
-            'gender' => $req->get("gender"),
-            'firstName' => $req->get("firstName"),
-            'lastName' => $req->get("lastName"),
+            'rezept' => $req->get('rezept'),
 
-            'street' => $req->get("street"),
-            'zip' => $req->get("zip"),
-            'city' => $req->get("city"),
+            'gender' => $req->get('gender'),
+            'firstName' => $req->get('firstName'),
+            'lastName' => $req->get('lastName'),
 
-            'email' => $req->get("email"),
+            'street' => $req->get('street'),
+            'zip' => $req->get('zip'),
+            'city' => $req->get('city'),
+
+            'email' => $req->get('email'),
+            'newsletter' => $req->get('newsletter'),
+
+            'platform' => $req->get('platform'),
 
             'ip' => $req->getClientIp(),
             'fingerprint' => $fingerprint
