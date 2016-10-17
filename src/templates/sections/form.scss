@@ -2,15 +2,35 @@
 
 .form{
 
-
-  .error{
-    color: $red;
-    font-weight: bold;
-    display: none;
+  label.description{
+    display: block;
+    margin-top: 30px;
   }
 
-  .required_platform{
+  label.error{
+    display: block;
+    width: 100%;
+    font-size: .7em;
+    font-weight: normal;
+    letter-spacing: 0;
     color: $red;
+  }
+
+  #agb-error{
+    float:right;
+    margin: 0;
+  }
+
+  #agb-error{
+    margin-bottom: 30px;
+  }
+
+  #rezept-error{
+    margin: 30px 0 5px;
+  }
+
+  #platform_rezeptaktion-error, #platform_anderes-error{
+    margin-bottom: 20px;
   }
 
   label{
@@ -22,11 +42,10 @@
     height: auto;
     padding: 15px 20px;
     border: 0px;
-    margin-bottom: 30px;
   }
 
-  input[type='text'].valide,input[type='email'].valide,input[type='tel'].valide,input[type='number'].valide{
-    border-left: 5px solid green;
+  input[type='text'].valid,input[type='email'].valid,input[type='tel'].valid,input[type='number'].valid{
+    border-left: 5px solid green!important;
   }
 
   .moretext{
@@ -47,6 +66,10 @@
     td:last-child{
       width: 70%;
     }
+
+    td{
+      vertical-align: top;
+    }
   }
 
   button[type='submit']:focus{
@@ -55,11 +78,12 @@
   }
 
   input[name='ort']{
-    margin-left: 4%;
-    width: 96%;
+    width: 100%;
   }
 
-  input[name='plz']{
+  input[name='zip']{
+    width: 96%;
+    margin-right: 4%;
   }
 
 
@@ -104,7 +128,7 @@
 
   .radio-section input{
     width: auto;
-    margin: 10px 10px 10px 0;
+    margin: 0px 10px 10px 0;
   }
 
   .checkbox-section{
@@ -119,8 +143,7 @@
 
   .checkbox-section label {
     display: block;
-    line-height: 1.6em;
-    padding-top:3px;
+    padding-top:8px;
   }
 
   .radio-section input[type='text']{
@@ -184,16 +207,16 @@
     }
   }
 
-  input[type='text'].required, input[type='number'].required, input[type='email'].required{
+  input[type='text'], input[type='number'], input[type='email'].required{
     border-left: 5px solid $red;
   }
 
   .radio-section.required input[type='radio'] + label{
-    color: $red;
+
   }
 
   input[type='checkbox'].required + label, input[type='radio'].required + label{
-    color: $red!important;
+
   }
 
 }
@@ -243,7 +266,6 @@
   }
 
   input[type='text'],input[type='email'],input[type='tel'],input[type='number']{
-    margin-bottom: 20px!important;
     padding: 10px 15px!important;
   }
 
