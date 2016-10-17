@@ -25,7 +25,7 @@ $("#sofortgewinn").validate({
         rezept: "required"
     },
     messages: {
-        anrede: "Bitte wählen Sie eine Option aus.",
+        anrede: "Bitte geben Sie Ihr Geschlecht an.",
         vorname: "Bitte füllen Sie dieses Feld aus.",
         nachname: "Bitte füllen Sie dieses Feld aus.",
         zip: {

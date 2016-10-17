@@ -1,9 +1,3 @@
-function is_touch_device() {
-    return (('ontouchstart' in window)
-    || (navigator.MaxTouchPoints > 0)
-    || (navigator.msMaxTouchPoints > 0));
-}
-
 if(!is_touch_device()){
     $(".teaser-image").hover(function(){
         $(this).stop().addClass("onhover");
@@ -11,6 +5,12 @@ if(!is_touch_device()){
         $(this).stop().removeClass("onhover");
     });
 }
+
+function is_touch_device() {
+    return 'ontouchstart' in window        // works on most browsers
+        || 'onmsgesturechange' in window;  // works on IE10 with some false positives
+};
+
 var selectedRecept = 0;
 
 $(".teaser-image").on('click', function(){
@@ -19,6 +19,7 @@ $(".teaser-image").on('click', function(){
     showGoToBottom();
     selectedRecept = $(this).data("index");
     console.log(selectedRecept);
+    like(selectedRecept);
     $("input[name='rezept']").val(selectedRecept);
     navigator.vibrate(200);
 });
