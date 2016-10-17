@@ -21,9 +21,9 @@ function is_touch_device() {
     || (navigator.msMaxTouchPoints > 0));
 }
 
-function fixedHeaderImage(){
-    var position = $(window).width()*.4;
-    $(".header-image").css("background-position", "0 -"+position+"px");
+function fixedHeaderImage() {
+    var position = $(window).width() * .4;
+    $(".header-image").css("background-position", "0 -" + position + "px");
 }
 
 function stickyFooter() {
@@ -57,42 +57,43 @@ $('input[name=phone]').keyup(function () {
 
 var display = false;
 
-$("#lang").click(function(){
+$("#lang").click(function () {
 
-    if(!display){
+    if (!display) {
         $("#lang").addClass("lang_switch_open");
         display = true;
-    }else{
+    } else {
         $("#lang").removeClass("lang_switch_open");
         display = false;
     }
 
 });
 
-$("#lang select").change(function(){
+$("#lang select").change(function () {
     window.location.href = $("#lang select").val();
 });
 
-if(!is_touch_device()){
-    $(".teaser-image").hover(function(){
+if (!is_touch_device()) {
+    $(".teaser-image").hover(function () {
         $(this).stop().addClass("onhover");
-    }, function(){
+    }, function () {
         $(this).stop().removeClass("onhover");
     });
 }
 var selectedRecept = 0;
 
-$(".teaser-image").on('click', function(){
+$(".teaser-image").on('click', function () {
     $(".teaser-image").removeClass("onclicked");
     $(this).stop().addClass("onclicked");
     showGoToBottom();
     selectedRecept = $(this).data("index");
-    console.log(selectedRecept);
     $("input[name='rezept']").val(selectedRecept);
+    like(selectedRecept);
+    console.log(selectedRecept);
     navigator.vibrate(200);
 });
 
-$(".radio-section.platform input[type='radio']").not(this).click(function(){
+$(".radio-section.platform input[type='radio']").not(this).click(function () {
     $(".rezeptaktion").fadeOut(0);
     $(".anderes").fadeOut(0);
     $(".required_platform").removeClass("required_platform");
@@ -102,54 +103,54 @@ $(".radio-section.platform input[type='radio']").not(this).click(function(){
     $("input[name='platform_rezeptaktion']").removeClass("valide");
 });
 
-$("input#rezeptaktion").click(function(){
+$("input#rezeptaktion").click(function () {
     $("input[name='platform_anderes']").removeClass("required");
     $("input[name='platform_rezeptaktion']").addClass("required");
     $(".rezeptaktion").fadeIn(0);
     $(".anderes").fadeOut(0);
 });
 
-$("input#anderes").click(function(){
+$("input#anderes").click(function () {
     $("input[name='platform_rezeptaktion']").removeClass("required");
     $("input[name='platform_anderes']").addClass("required");
     $(".rezeptaktion").fadeOut(0);
     $(".anderes").fadeIn(0);
 });
 
-function agbPosition(){
+function agbPosition() {
     var paddingLeft = parseInt($(".form.container").css("margin-left"), 10) + parseInt($(".grid-container").css("margin-left"), 10);
     $(".agbs, .sticky-button").width($(window).width());
-    $(".agbs, .sticky-button").css("margin-left", "-"+paddingLeft+"px");
+    $(".agbs, .sticky-button").css("margin-left", "-" + paddingLeft + "px");
 }
 
-function showAGB(){
+function showAGB() {
     $(".agbs").slideDown(100);
     $(".agbs").addClass("showagb");
 
 }
 
-function hideAGB(){
+function hideAGB() {
     $(".agbs").slideUp(100);
     $(".agbs").removeClass("showagb");
 }
 
-function showGoToBottom(){
+function showGoToBottom() {
     showHideButton();
 
-    $(window).scroll(function(){
+    $(window).scroll(function () {
         showHideButton();
     });
 }
 
-function showHideButton(){
-    if($(window).scrollTop() > ($('.form').position().top-600)){
+function showHideButton() {
+    if ($(window).scrollTop() > ($('.form').position().top - 600)) {
         $(".sticky-goto-bottom-button").fadeOut(200);
-    }else{
+    } else {
         $(".sticky-goto-bottom-button").fadeIn(200);
     }
 }
 
 
-function goToForm(){
-    $("html, body").animate({ scrollTop: $('.form').position().top }, "slow");
+function goToForm() {
+    $("html, body").animate({scrollTop: $('.form').position().top}, "slow");
 }
