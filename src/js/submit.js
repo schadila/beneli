@@ -45,7 +45,6 @@ function post(endpoint, data, cb) {
     new Fingerprint2().get(function (fp) {
         data.fingerprint = fp;
         $.post(endpoint, data, function (res) {
-            console.log(res);
             cb && cb(); // <- execute callback
         });
     });

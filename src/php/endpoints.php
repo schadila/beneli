@@ -5,7 +5,7 @@ date_default_timezone_set('UTC');
  * PUBLIC API ENDPOINTS
  */
 $app->get('/likes', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
-    $likes = DB::query('SELECT rezept, COUNT(*)*1100 as likes FROM likes GROUP BY rezept');
+    $likes = DB::query('SELECT rezept, COUNT(*) as likes FROM likes GROUP BY rezept');
     foreach ($likes as &$like) {
         $like['likes'] = humanize($like['likes']);
     }
