@@ -8,9 +8,9 @@ function showGoToBottom(){
 
 function showHideButton(){
     if($(window).scrollTop() > ($('.form').position().top-600)){
-        $(".sticky-goto-bottom-button").fadeOut(200);
+        $(".sticky-goto-bottom-button").stop().fadeOut(200);
     }else{
-        $(".sticky-goto-bottom-button").fadeIn(200);
+        $(".sticky-goto-bottom-button").stop().fadeIn(200);
     }
 }
 
