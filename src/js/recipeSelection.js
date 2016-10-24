@@ -17,6 +17,5 @@ $(".teaser-image").on('click', function(event){
     selectedRecept = $(this).data("index");
     like(selectedRecept);
     $("input[name='rezept']").val(selectedRecept);
-
-
+    navigator.vibrate(200);
 });
