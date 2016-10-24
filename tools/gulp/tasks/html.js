@@ -88,7 +88,7 @@ gulp.task('html', ['css', 'js', 'link-css-js', 'translate'], function () {
             html5: true,
             minifyCSS: true,
             removeComments: true,
-            removeRedundantAttributes: true
+            removeRedundantAttributes: false
         }))
         .pipe(gulp.dest('./build'));
 });

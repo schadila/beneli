@@ -1,12 +1,12 @@
 like = function (rezeptId) {
-    var endpoint = "/php/API.php/like";
+    var endpoint = "./php/API.php/like";
     var data = {'rezept': rezeptId};
     post(endpoint, data, getLikes);
 };
 
 
 teilnehmen = function (onSubmit) {
-    var endpoint = "/php/API.php/teilnehmen";
+    var endpoint = "./php/API.php/teilnehmen";
 
     var gender = $("input[name='anrede']:checked").val();
     var firstName = $("input[name='vorname']").val();
