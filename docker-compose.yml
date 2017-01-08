@@ -4,21 +4,21 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - "33366:3306"
+      - "33666:3306"
     volumes:
       - "/var/lib/mysql"
       - "./.docker/sql:/docker-entrypoint-initdb.d"
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: rezept-promo
-      MYSQL_USER: rezept-promo
-      MYSQL_PASSWORD: rezept-promo
+      MYSQL_DATABASE: beneli
+      MYSQL_USER: beneli
+      MYSQL_PASSWORD: beneli
 
   apache:
     image: chialab/php:5.6-apache
     ports:
-      - "10000:80"
+      - "50000:80"
     volumes:
       - "./build:/var/www/html/"
     restart: always
@@ -26,6 +26,6 @@ services:
       - mysql
     environment:
       DB_HOST: mysql
-      DB_DATABASE: rezept-promo
-      DB_USER: rezept-promo
-      DB_PASSWORD: rezept-promo
+      DB_DATABASE: beneli
+      DB_USER: beneli
+      DB_PASSWORD: beneli

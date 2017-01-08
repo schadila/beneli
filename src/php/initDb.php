@@ -9,9 +9,9 @@ if (strpos($_SERVER["SERVER_NAME"], "appenzeller") !== FALSE) {
   $env = "LIVE";
 
   // live-server!
-  DB::$dbName = 'app-rezept-promo';
-  DB::$user = 'app-rezept-promo';
-  DB::$password = '2Fsf"/&fbjsA/&)(/)!+';
+  DB::$dbName = 'beneli';
+  DB::$user = 'beneli';
+  DB::$password = 'beneli';
   DB::useDB(DB::$dbName);
 
 }
@@ -19,9 +19,9 @@ elseif (strpos($_SERVER["SERVER_NAME"], "contexta04.nine.ch")) {
 
   // dev/stage-server!
   $env = "DEV";
-  DB::$dbName = 'stage-app-rezept';
-  DB::$user = 'stage-app-rezept';
-  DB::$password = 'stage-app-rezept';
+  DB::$dbName = 'beneli';
+  DB::$user = 'beneli';
+  DB::$password = 'beneli';
   DB::useDB(DB::$dbName);
 
 }

@@ -58,7 +58,7 @@ gulp.task('link-css-js-dev', ['compile-templates', 'css-dev', 'js-dev'], functio
 gulp.task('translate', ['link-css-js'], function () {
     return gulp.src('./build/.tmp/*.html')
         .pipe(i18n({
-            locales: ['de', 'fr'],
+            locales: ['de'],
             localeDir: './src/i18n',
             schema: 'suffix',
             delimeters: ['[[', ']]']
@@ -69,7 +69,7 @@ gulp.task('translate', ['link-css-js'], function () {
 gulp.task('translate-dev', ['link-css-js-dev'], function () {
     return gulp.src('./build/.tmp/*.html')
         .pipe(i18n({
-            locales: ['de', 'fr'],
+            locales: ['de'],
             localeDir: './src/i18n',
             schema: 'suffix',
             delimeters: ['[[', ']]']
