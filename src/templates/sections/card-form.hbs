@@ -1,4 +1,6 @@
 <div class="form container" id="form" xmlns="http://www.w3.org/1999/html">
+    <p class="message success hide">Die Karte wurde erfolgreich hinzugefügt!</p>
+    <p class="message fail hide"></p>
     <form class="add-card-form" id="add-card" onsubmit="javascript:return false">
         <section class="checkbox-section">
             <input type="checkbox" name="active" id="active" value="1"><label for="active">Aktivieren</label>
@@ -14,7 +16,7 @@
         <label for="price" class="description">Gesamtbetrag:</label>
         <input type="number" class=" required" name="price" id="price" placeholder=""/>
         <label for="anteile" class="description">Anteile:</label>
-        <input type="number" class=" required" name="anteile" id="anteile" placeholder=""/>
+        <input type="number" class="" name="anteile" id="anteile" placeholder=""/>
         <br><br>
         <section class="checkbox-section types">
             <input type="checkbox" name="partial" id="partial" value="1"><label for="partial">Teilbezahlung</label><br>

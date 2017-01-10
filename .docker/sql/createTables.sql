@@ -13,8 +13,13 @@ DROP TABLE IF EXISTS `submits`;
 
 CREATE TABLE `submits` (
   `id`      INT(11) UNSIGNED  NOT NULL AUTO_INCREMENT,
-  `name`    VARCHAR(200)      NOT NULL DEFAULT '',
-  `prename` VARCHAR(200)      NOT NULL DEFAULT '',
+  `vorname`    VARCHAR(200)      NOT NULL DEFAULT '',
+  `name`  VARCHAR(200)      NOT NULL DEFAULT '',
+  `adresse`  VARCHAR(200)      NOT NULL DEFAULT '',
+  `ort`  VARCHAR(200)      NOT NULL DEFAULT '',
+  `email`  VARCHAR(200)      NOT NULL DEFAULT '',
+  `text`  TEXT(999)      NOT NULL DEFAULT '',
+  `anteile`  INT(11)      NOT NULL,
   `product` INT(11) UNSIGNED        NOT NULL,
   PRIMARY KEY (`id`)
 )

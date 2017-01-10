@@ -5,12 +5,9 @@ date_default_timezone_set('UTC');
 /**
  * PUBLIC API ENDPOINTS
  */
-$app->get('/likes', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
-    $likes = DB::query('SELECT rezept, COUNT(*) as likes FROM likes GROUP BY rezept');
-    foreach ($likes as &$like) {
-        $like['likes'] = humanize($like['likes']);
-    }
-    return $app->json($likes);
+$app->get('/getproduct', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
+    $product = DB::query('SELECT * FROM products WHERE id=%i', $req->get("product"));
+    return $app->json($product);
 });
 
 $app->get('/gifts', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
@@ -30,6 +27,7 @@ $app->post('/addcard', function (\Symfony\Component\HttpFoundation\Request $req)
         'url' => $req->get('url'),
         'price' => $req->get('price'),
         'anteile' => $req->get('anteile'),
+        'rest' => $req->get('anteile'),
         'partial' => $req->get('partial'),
         'type' => $req->get('type'),
         'active' => $req->get('active')
@@ -38,6 +36,45 @@ $app->post('/addcard', function (\Symfony\Component\HttpFoundation\Request $req)
 
     return $app->json($response);
 });
+
+$app->post('/give', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
+
+    $rest = DB::query('SELECT rest FROM products WHERE id=%i', $req->get("product"));
+
+    foreach ($rest as $row) {
+        $abzug = $row['rest']-$req->get('anteile');
+
+        if($abzug<0){
+
+            $abzug = $row['rest'];
+
+            $response = ['success' => false, 'anteile' => $abzug];
+            return $app->json($response);
+
+        }else{
+
+            $res = DB::insertUpdate('submits', [
+                'name' => $req->get('name'),
+                'vorname' => $req->get('vorname'),
+                'email' => $req->get('email'),
+                'adresse' => $req->get('adresse'),
+                'ort' => $req->get('ort'),
+                'text' => $req->get('text'),
+                'anteile' => $req->get('anteile'),
+                'product' => $req->get('product')
+            ]);
+
+            $resupdate = DB::update('products', array(
+                'rest' => $abzug
+            ), 'id=%i', $req->get("product"));
+
+            $response = ['success' => $res, 'anteile' => $abzug];
+            return $app->json($response);
+        }
+
+    }
+});
+
 
 /**
  * inserts user infos into db

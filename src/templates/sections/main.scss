@@ -113,18 +113,47 @@
 
     width: 100%;
     font-family: 'Roboto', Georgia, Times;
-    font-size: .8em;
     color: #888888;
     letter-spacing: 0;
     text-align: center;
   }
 
-  .gift table tr{
-    padding: 20px;
+  .gift table tr:first-child{
+    font-size: 1.2em;
+    font-weight:bold;
+    color: #AB997E;
+  }
+
+  .gift table tr:last-child{
+    font-weight:300;
+    font-size: .75em;
+    text-transform: uppercase;
   }
 
   .gift table td{
     padding-top: 10px;
+    width: 33.33%;
+  }
+
+  .gift .teaser-image .price{
+    position: absolute;
+    display: none;
+    top: 10px;
+    right: 10px;
+    font-family: 'Roboto', Georgia, Times;
+    letter-spacing:0;
+    line-height: 1.15em;
+    font-size: .65em;
+    font-weight: bold;
+    color: #444;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 100%;
+    border-top-right-radius: 0%;
+    text-align: center;
+    padding: 17px 0;
+    margin: 0;
   }
 
   .gift span.likes{
