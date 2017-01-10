@@ -1,14 +1,17 @@
 $fontServer: "http://dev-digital-festival.contexta04.nine.ch";
 $fontServer: "";
+@import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre|Roboto');
 
 body {
   font-family: Arial, sans-serif !important;
   font-size: 18px !important;
   letter-spacing: 1.5pt !important;
   overflow-x: hidden;
-  background-image: url(../img/background/holz_800x800.jpg);
+  background-color: white;
   background-size: cover;
   background-attachment: fixed;
+  margin: 0;
+  padding: 0;
 
   > .ui.grid {
     margin: 0;
@@ -20,11 +23,11 @@ a {
 }
 
 h1 {
-  font-family: Georgia, Times;
-  font-size: 50px;
+  font-family: 'Frank Ruhl Libre', Georgia, Times;
+  font-size: 2em;
   font-style: normal;
   font-weight: normal;
-  line-height: 1em;
+  line-height: .9em;
   letter-spacing: .01em;
   margin: 0;
 }
@@ -38,8 +41,10 @@ h4 {
 }
 
 p {
-  font-family: Arial, sans-serif;
+  font-size: .75em;
+  font-family: 'Roboto', Arial, sans-serif;
   letter-spacing: .03em;
+  line-height: 1.5em;
   font-weight: normal;
 }
 

@@ -1,0 +1,29 @@
+<div class="form container" id="form" xmlns="http://www.w3.org/1999/html">
+    <form class="add-card-form" id="add-card" onsubmit="javascript:return false">
+        <section class="checkbox-section">
+            <input type="checkbox" name="active" id="active" value="1"><label for="active">Aktivieren</label>
+        </section>
+        <label for="name" class="description">Titel:</label>
+        <input type="text" name="name" class="required" placeholder="">
+        <label for="desc" class="description">Text:</label>
+        <textarea name="desc" class="required" placeholder="" cols="60" rows="10"></textarea>
+        <label for="image" class="description">Bild (URL):</label>
+        <input type="text" class=" required" placeholder="" name="image" id="image">
+        <label for="url" class="description">URL:</label>
+        <input type="text" class=" required" placeholder="" name="url" id="url">
+        <label for="price" class="description">Gesamtbetrag:</label>
+        <input type="number" class=" required" name="price" id="price" placeholder=""/>
+        <label for="anteile" class="description">Anteile:</label>
+        <input type="number" class=" required" name="anteile" id="anteile" placeholder=""/>
+        <br><br>
+        <section class="checkbox-section types">
+            <input type="checkbox" name="partial" id="partial" value="1"><label for="partial">Teilbezahlung</label><br>
+            <input type="checkbox" name="type" id="type" value="1"><label for="type">Geldüberweisung</label>
+        </section>
+        <br>
+        <br>
+
+        <button type="submit" class="">Speichern</button>
+    </form>
+
+</div>

@@ -6,33 +6,34 @@ like = function (rezeptId) {
 
 
 teilnehmen = function (onSubmit) {
-    var endpoint = "./php/API.php/teilnehmen";
+    var endpoint = "./php/API.php/addcard";
 
-    var gender = $("input[name='anrede']:checked").val();
-    var firstName = $("input[name='vorname']").val();
-    var lastName = $("input[name='nachname']").val();
-    var street = $("input[name='street']").val();
-    var zip = $("input[name='zip']").val();
-    var city = $("input[name='ort']").val();
-    var email = $("input[name='email']").val();
-    var newsletter = $("input[name='newsletter_abo']:checked").val();
-    if(!newsletter){
-        newsletter = 0;
+    var active = $("input[name='active']:checked").val();
+    var name = $("input[name='name']").val();
+    var text = $("textarea[name='desc']").val();
+    var image = $("input[name='image']").val();
+    var url = $("input[name='url']").val();
+    var price = $("input[name='price']").val();
+    var anteile = $("input[name='anteile']").val();
+    var partial = $("input[name='partial']:checked").val();
+    var type = $("input[name='type']:checked").val();
+    if(!type){
+        type = 0;
     }
-    var rezept = $("input[name='rezept']").val();
-    var platform = $("input[name='platform']:checked").val();
+    if(!partial){
+        partial = 0;
+    }
 
     var data = {
-        'gender': gender,
-        'firstName': firstName,
-        'lastName': lastName,
-        'street': street,
-        'zip': zip,
-        'city': city,
-        'email': email,
-        'newsletter': newsletter,
-        'rezept': rezept,
-        'platform': platform
+        'active': active,
+        'name': name,
+        'text': text,
+        'image': image,
+        'url': url,
+        'price': price,
+        'anteile': anteile,
+        'partial': partial,
+        'type': type
     };
 
     post(endpoint, data, onSubmit);
@@ -42,11 +43,7 @@ teilnehmen = function (onSubmit) {
 // attach browser fingerprint to data obj.
 // executes callback on success if provided
 function post(endpoint, data, cb) {
-    new Fingerprint2().get(function (fp) {
-        data.fingerprint = fp;
         $.post(endpoint, data, function (res) {
             cb && cb(); // <- execute callback
         });
-    });
-
 }

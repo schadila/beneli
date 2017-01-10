@@ -25,5 +25,4 @@ gulp.task("livereload-watch", ["build-dev"], function () {
     // gulp.watch(["./src/i18n/**/*.json"], [ "build-dev", "livereload-html"]);
 });
 
-gulp.task("dev", ["livereload-connect", "livereload-watch"]);
 gulp.task("default", ["livereload-connect", "livereload-watch"]);

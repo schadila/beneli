@@ -34,7 +34,7 @@
   }
 
   label{
-    color: white;
+    color: black;
   }
 
   input[type='text'],input[type='email'],input[type='tel'],input[type='number']{
@@ -95,7 +95,7 @@
     font-weight: bold;
     line-height: 45px;
     letter-spacing: 0px;
-    color: #fff;
+    color: #000;
     display: inline-block;
     width: auto;
     padding: 0 10px 0 15px;
@@ -137,7 +137,7 @@
 
   .checkbox-section input[type='checkbox']{
     width: auto;
-    margin: 10px 15px 30px 0;
+    margin: 10px 15px 10px 0;
     float: left;
   }
 

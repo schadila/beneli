@@ -1,6 +1,7 @@
 <?php
 date_default_timezone_set('UTC');
 
+
 /**
  * PUBLIC API ENDPOINTS
  */
@@ -12,14 +13,27 @@ $app->get('/likes', function (\Symfony\Component\HttpFoundation\Request $req) us
     return $app->json($likes);
 });
 
+$app->get('/gifts', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
+    $gifts = DB::query('SELECT * FROM products');
+    return $app->json($gifts);
+});
+
 /**
  * 'likes' a recipe, updates 'like' if fingerprint has already voted
  */
-$app->post('/like', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
-    $fingerprint = $req->get('fingerprint');
-    $rezept = $req->get('rezept');
+$app->post('/addcard', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
 
-    $res = DB::insertUpdate('likes', ['fingerprint' => $fingerprint, 'rezept' => $rezept]);
+    $res = DB::insertUpdate('products', [
+        'name' => $req->get('name'),
+        'text' => $req->get('text'),
+        'image' => $req->get('image'),
+        'url' => $req->get('url'),
+        'price' => $req->get('price'),
+        'anteile' => $req->get('anteile'),
+        'partial' => $req->get('partial'),
+        'type' => $req->get('type'),
+        'active' => $req->get('active')
+    ]);
     $response = ['success' => $res];
 
     return $app->json($response);
