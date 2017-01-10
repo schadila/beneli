@@ -8,7 +8,7 @@ like = function (rezeptId) {
 addcard = function (onSubmit) {
     var endpoint = "./php/API.php/addcard";
 
-    var active = $("input[name='active']:checked").val();
+    var active = $("input[name='active']").val();
     var name = $("input[name='name']").val();
     var text = $("textarea[name='desc']").val();
     var image = $("input[name='image']").val();

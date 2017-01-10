@@ -2,9 +2,7 @@
     <p class="message success hide">Die Karte wurde erfolgreich hinzugefügt!</p>
     <p class="message fail hide"></p>
     <form class="add-card-form" id="add-card" onsubmit="javascript:return false">
-        <section class="checkbox-section">
-            <input type="checkbox" name="active" id="active" value="1"><label for="active">Aktivieren</label>
-        </section>
+
         <label for="name" class="description">Titel:</label>
         <input type="text" name="name" class="required" placeholder="">
         <label for="desc" class="description">Text:</label>
@@ -20,7 +18,8 @@
         <br><br>
         <section class="checkbox-section types">
             <input type="checkbox" name="partial" id="partial" value="1"><label for="partial">Teilbezahlung</label><br>
-            <input type="checkbox" name="type" id="type" value="1"><label for="type">Geldüberweisung</label>
+            <input type="checkbox" name="type" id="type" value="1"><label for="type">Geldüberweisung</label><br>
+            <input type="hidden" name="active" id="active" value="1">
         </section>
         <br>
         <br>

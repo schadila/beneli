@@ -13,6 +13,12 @@ function switchForm(data){
         $("input#anteile").addClass("hide").val(1);
         $("label[for='anteile']").addClass("hide");
     }
+
+    $("#product-title").html(data.name);
+    $("#product-text").html(data.text);
+    $("#product-image").attr("src", data.image);
+    $("#product-link").attr("href", data.url);
+
 }
 
 $(document).ready(function(){
