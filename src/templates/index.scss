@@ -54,22 +54,6 @@ input {
   margin-bottom: .5rem;
 }
 
-button {
-  width: 100%;
-  background-color: #000;
-  border-width: 0;
-  padding: .5rem;
-  font-family: 'FuturaPT-Book';
-  letter-spacing: 1.25pt;
-  text-transform: uppercase;
-  font-size: 18px;
-  color: #fff;
-
-  &.red {
-    background-color: #FF4300;
-  }
-}
-
 .md-overlay {
   position: fixed;
   width: 100%;

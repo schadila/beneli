@@ -83,6 +83,9 @@
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
     margin-bottom: 20px;
+
+    border-radius: 5px;
+    overflow: hidden;
   }
 
   .gift img{
@@ -178,7 +181,7 @@
 
   .teaser-image{
     position: relative;
-    height: 150px;
+    height: 180px;
     width: 100%;
     background-size: cover;
     background-position: center center;
@@ -242,7 +245,7 @@
     display: block;
     position: relative;
     width: 100%;
-    padding: 15px 10px;
+    padding: 20px 10px;
     margin-top: 40px;
     font-size: .75em;
     text-decoration: none;

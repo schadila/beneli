@@ -22,6 +22,7 @@ $(document).ready(function(){
                     template +=     '</div>';
                 }
                 template +=     "<h1>"+gift.name+"</h1>";
+
                 template +=     '<p>'+gift.text+'</p>';
                 template +=     '<table><tr>';
                 template +=     '<td>'+gift.anteile+'</td><td>'+gift.rest+'</td><td>'+(gift.price/gift.anteile)+'</td>';

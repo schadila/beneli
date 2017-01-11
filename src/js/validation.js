@@ -1,7 +1,6 @@
 $("#add-card").validate({
     rules: {
         name: "required",
-        text: "required",
         image: "required",
         price: "required",
         anteile: {
@@ -10,7 +9,6 @@ $("#add-card").validate({
     },
     messages: {
         name: "Bitte füllen Sie dieses Feld aus.",
-        text: "Bitte füllen Sie dieses Feld aus.",
         image: "Bitte füllen Sie dieses Feld aus.",
         price: "Bitte füllen Sie dieses Feld aus.",
         anteile: "Bitte füllen Sie dieses Feld aus."
@@ -35,7 +33,7 @@ $("#schenken").validate({
         email: "Bitte füllen Sie dieses Feld aus.",
         adresse: "Bitte füllen Sie dieses Feld aus.",
         ort: "Bitte füllen Sie dieses Feld aus.",
-        anteile: "Bitte füllen Sie dieses Feld aus.",
+        anteile: "Der Anteil muss mindestens 1 sein und darf die verfügbaren Anteile nicht überschreiten.",
         product: ""
     },
     ignore: ".ignore",

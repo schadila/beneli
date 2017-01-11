@@ -2,18 +2,26 @@
 
 <div class="form container" id="form" xmlns="http://www.w3.org/1999/html">
     <h1 id="product-title"></h1>
+    <img id="product-image" src=""/><br>
     <p id="product-text"></p>
-    <img id="product-image" src=""/>
-    <a id="product-link" src="">Produkt-Link</a>
+    <a id="product-link" src="" target="_blank">Produkt-Link</a>
 
     <p class="message success hide">Vielen Dank! Wir haben Dir in diesem Augenblick eine E-Mail gesendet mit unseren Kontoangaben.</p>
     <p class="message fail hide"></p>
     <form class="schenken-form hide" id="schenken" onsubmit="javascript:return false">
-        <label for="vorname" class="description">Vorname:</label>
-        <input type="text" name="vorname" class="required" placeholder="">
+        <table>
+            <tr>
+                <td>
+                    <label for="vorname" class="description">Vorname:</label>
+                    <input type="text" name="vorname" class="required" placeholder="">
+                </td>
+                <td>
+                    <label for="name" class="description">Name:</label>
+                    <input type="text" name="name" class="required" placeholder="">
+                </td>
+            </tr>
+        </table>
 
-        <label for="name" class="description">Name:</label>
-        <input type="text" name="name" class="required" placeholder="">
 
         <label for="adresse" class="description">Adresse:</label>
         <input type="text" name="adresse" class="required" placeholder="">
@@ -23,16 +31,24 @@
 
         <label for="email" class="description">E-Mail:</label>
         <input type="email" name="email" class="required" placeholder="">
+        <table>
+            <tr>
+                <td>
+                    <label for="anteile" class="description">Anteile:</label>
+                    <input type="number" class=" required" name="anteile" id="anteile"  min="1" max="10" placeholder=""/>
+                </td>
+                <td>
 
-        <label for="anteile" class="description">Anteile:</label>
-        <input type="number" class=" required" name="anteile" id="anteile" placeholder=""/>
+                </td>
+            </tr>
+        </table>
 
         <label for="desc" class="description">Nachricht:</label>
         <textarea name="desc" class="" placeholder="" cols="60" rows="10"></textarea>
 
         <input type="hidden" class=" required" name="product" id="product" placeholder=""/>
 <br><br>
-        <button type="submit" class="">Betrag Schenken</button>
+        <button type="submit" class="submit">Betrag Schenken</button>
     </form>
 
 </div>

@@ -5,6 +5,8 @@ $(document).ready(function () {
     fixedHeaderImage()
     stickyFooter();
     agbPosition();
+
+
 });
 
 function fixedHeaderImage(){

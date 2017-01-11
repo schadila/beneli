@@ -4,7 +4,7 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - "33666:3306"
+      - "2244:3306"
     volumes:
       - "/var/lib/mysql"
       - "./.docker/sql:/docker-entrypoint-initdb.d"
@@ -18,7 +18,7 @@ services:
   apache:
     image: chialab/php:5.6-apache
     ports:
-      - "50000:80"
+      - "8000:80"
     volumes:
       - "./build:/var/www/html/"
     restart: always

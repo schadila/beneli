@@ -7,14 +7,30 @@
         <input type="text" name="name" class="required" placeholder="">
         <label for="desc" class="description">Text:</label>
         <textarea name="desc" class="required" placeholder="" cols="60" rows="10"></textarea>
-        <label for="image" class="description">Bild (URL):</label>
-        <input type="text" class=" required" placeholder="" name="image" id="image">
-        <label for="url" class="description">URL:</label>
-        <input type="text" class=" required" placeholder="" name="url" id="url">
-        <label for="price" class="description">Gesamtbetrag:</label>
-        <input type="number" class=" required" name="price" id="price" placeholder=""/>
-        <label for="anteile" class="description">Anteile:</label>
-        <input type="number" class="" name="anteile" id="anteile" placeholder=""/>
+        <table>
+            <tr>
+                <td>
+                    <label for="image" class="description">Bild (URL):</label>
+                    <input type="text" class=" required" placeholder="" name="image" id="image">
+                </td>
+                <td>
+                    <label for="url" class="description">URL:</label>
+                    <input type="text" class=" required" placeholder="" name="url" id="url">
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <label for="price" class="description">Gesamtbetrag:</label>
+                    <input type="number" class=" required" name="price" id="price" placeholder=""/>
+                </td>
+                <td>
+                    <label for="anteile" class="description">Anteile:</label>
+                    <input type="number" class="" name="anteile" id="anteile" placeholder=""/>
+                </td>
+            </tr>
+        </table>
         <br><br>
         <section class="checkbox-section types">
             <input type="checkbox" name="partial" id="partial" value="1"><label for="partial">Teilbezahlung</label><br>
@@ -24,7 +40,7 @@
         <br>
         <br>
 
-        <button type="submit" class="">Speichern</button>
+        <button type="submit" class="submit">Speichern</button>
     </form>
 
 </div>

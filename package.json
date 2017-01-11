@@ -46,6 +46,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "sass-grid": "^2.0.3"
+    "sass-grid": "^2.0.3",
+    "simplemde": "^1.11.2"
   }
 }

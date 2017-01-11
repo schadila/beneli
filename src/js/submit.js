@@ -1,3 +1,8 @@
+
+var simplemde = new SimpleMDE({
+    hideIcons: ["guide", "heading", "quote", "link", "image", "side-by-side", "fullscreen"]
+});
+
 like = function (rezeptId) {
     var endpoint = "./php/API.php/like";
     var data = {'rezept': rezeptId};
@@ -10,7 +15,7 @@ addcard = function (onSubmit) {
 
     var active = $("input[name='active']").val();
     var name = $("input[name='name']").val();
-    var text = $("textarea[name='desc']").val();
+    var text = simplemde.options.previewRender(simplemde.value());
     var image = $("input[name='image']").val();
     var url = $("input[name='url']").val();
     var price = $("input[name='price']").val();

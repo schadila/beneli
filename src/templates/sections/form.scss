@@ -2,6 +2,7 @@
 
 .form{
 
+
   label.description{
     display: block;
     margin-top: 30px;
@@ -49,6 +50,11 @@
     border-left: 5px solid green!important;
   }
 
+  input#anteile{
+    width: 80px;
+    text-align: center;
+  }
+
   .moretext{
     display: none;
   }
@@ -62,10 +68,12 @@
     width: 100%;
 
     td:first-child{
-      width: 30%;
+      width: 48%;
+      padding-right: 2%;
     }
     td:last-child{
-      width: 70%;
+      width: 48%;
+      padding-left: 2%;
     }
 
     td{
@@ -87,40 +95,23 @@
     margin-right: 4%;
   }
 
-
-
-  button[type='submit'] {
-    text-transform: none;
-    font-family: Georgia, Arial;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 45px;
-    letter-spacing: 0px;
-    color: #000;
-    display: inline-block;
-    width: auto;
-    padding: 0 10px 0 15px;
-    background-image: url(http://appenzeller.ch/themes/appenzeller/images/bg_button_medium.png);
-    }
-
-  button[type='submit']:hover{
-    color: $black;
-    font-weight: bold;
-  }
-
-  .button_handler {
-    float: right;
+  .submit{
     display: block;
-    width: 34px;
-    height: 34px;
-    margin-left: 15px;
-    margin-top: 6px;
-    background-image: url(http://appenzeller.ch/themes/appenzeller/images/sprite_v4.png);
-    background-position: -336px -144px;
+    position: relative;
+    padding: 15px 20px;
+    font-size: .75em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #CCBE96;
+    color: white;
+    transition: all .3s ease;
+    outline: none;
+    border: 0;
   }
 
-  button[type='submit']:hover .button_handler {
-    background-position: -336px -192px;
+  .submit:hover{
+    background: #AB997E;
   }
 
   .radio-section{
@@ -223,6 +214,7 @@
 }
 
 @media only screen and (max-width: $mobile) {
+
 
   input{
     border-radius: 0px;
