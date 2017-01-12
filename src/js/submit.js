@@ -1,6 +1,7 @@
 
 var simplemde = new SimpleMDE({
-    hideIcons: ["guide", "heading", "quote", "link", "image", "side-by-side", "fullscreen"]
+    hideIcons: ["guide", "heading", "quote", "link", "image", "side-by-side", "fullscreen"],
+    spellChecker: false
 });
 
 like = function (rezeptId) {
@@ -87,6 +88,7 @@ give = function (onSubmit) {
                 $(".message.fail").html("Es ist nur noch "+res.anteile+" Anteil verfügbar.");
             }else if(res.anteile==0){
                 $(".message.fail").html("Ups, das ging aber schnell. Jemand ist Dir zuvorgekommen. Leider sind keine Anteile mehr verfügbar. Aber es gibt noch andere Geschenke!");
+                $("form#schenken").addClass("hide");
             }else{
                 $(".message.fail").html("Es sind nur noch "+res.anteile+" Anteile verfügbar.");
             }

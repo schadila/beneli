@@ -26,8 +26,8 @@ $app->post('/addcard', function (\Symfony\Component\HttpFoundation\Request $req)
         'image' => $req->get('image'),
         'url' => $req->get('url'),
         'price' => $req->get('price'),
-        'anteile' => $req->get('anteile'),
-        'rest' => $req->get('anteile'),
+        'anteile' => $req->get('price')/10,
+        'rest' => $req->get('price')/10,
         'partial' => $req->get('partial'),
         'type' => $req->get('type'),
         'active' => $req->get('active')

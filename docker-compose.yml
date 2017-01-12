@@ -18,7 +18,7 @@ services:
   apache:
     image: chialab/php:5.6-apache
     ports:
-      - "8000:80"
+      - "50000:80"
     volumes:
       - "./build:/var/www/html/"
     restart: always

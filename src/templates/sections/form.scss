@@ -1,7 +1,88 @@
 @import "../_vars.scss";
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
 .form{
+  margin-top: 100px;
 
+  h1{
+    margin-bottom: 20px;
+  }
+
+  p{
+    margin: 30px 0;
+    line-height: 1.8em;
+  }
+
+  div.product-image-container{
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    overflow: hidden;
+    border-radius: 5px;
+
+    img{
+      width:100%;
+    }
+  }
+
+  .message{
+    width: 100%;
+    padding: 20px 12px;
+    border-radius: 3px;
+  }
+
+  .message:before{
+    font-family:FontAwesome;
+    font-style:normal;
+    font-weight:400;
+    speak:none;
+    display:inline-block;
+    text-decoration:inherit;
+    width:1em;
+    margin: 0 .6em;
+    text-align:center;
+    font-variant:normal;
+    text-transform:none;
+    line-height:1em;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+  }
+
+  #product-link:before{
+    content: "\f08e";
+    font-family:FontAwesome;
+    font-style:normal;
+    font-weight:400;
+    speak:none;
+    display:inline-block;
+    text-decoration:inherit;
+    width:1em;
+    margin: 0 .6em;
+    text-align:center;
+    font-variant:normal;
+    text-transform:none;
+    line-height:1em;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+  }
+
+  .message.fail{
+    background-color: #FFBABA;
+    color: #D8000C;
+  }
+
+  .message.fail:before{
+    content:'\f057';
+  }
+
+  .message.success{
+    background-color: #DFF2BF;
+    color: #4F8A10;
+  }
+
+  .message.success:before{
+    content:'\f00c';
+  }
 
   label.description{
     display: block;
@@ -46,8 +127,12 @@
     background-color: #eeeeee;
   }
 
+  input[type='text'].error,input[type='email'].error,input[type='tel'].error,input[type='number'].error{
+    border-left: 5px solid $red!important;
+  }
+
   input[type='text'].valid,input[type='email'].valid,input[type='tel'].valid,input[type='number'].valid{
-    border-left: 5px solid green!important;
+    border-left: 5px solid #3CBC3C!important;
   }
 
   input#anteile{
@@ -96,7 +181,6 @@
   }
 
   .submit{
-    display: block;
     position: relative;
     padding: 15px 20px;
     font-size: .75em;
@@ -108,6 +192,8 @@
     transition: all .3s ease;
     outline: none;
     border: 0;
+    border-radius: 3px;
+    width: auto;
   }
 
   .submit:hover{
@@ -199,8 +285,9 @@
     }
   }
 
-  input[type='text'], input[type='number'], input[type='email'].required{
-    border-left: 5px solid $red;
+  input[type='text'], input[type='number'], input[type='email']{
+    border-left: 5px solid #ccc;
+    border-radius: 3px;
   }
 
   .radio-section.required input[type='radio'] + label{

@@ -2,7 +2,8 @@ $(document).ready(function () {
     if (Function('/*@cc_on return document.documentMode===10@*/')()) {
         $("input").addClass("ie10");
     }
-    fixedHeaderImage()
+
+    fixedHeaderImage();
     stickyFooter();
     agbPosition();
 

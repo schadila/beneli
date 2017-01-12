@@ -5,37 +5,62 @@ $(document).ready(function(){
     var endpoint = "./php/API.php/gifts";
     $.get(endpoint, function (res) {
 
+        var i = 0;
         res.length && res.forEach(function (gift) {
+
             if(gift.rest>0 && gift.active == 1){
                 var template;
+                var select;
                 var online = "";
-                var restprice = 100-(100*(gift.rest/gift.anteile));
-                if(gift.type==1){var online = "<small>(Überweisung)</small>"}
+                var restprice = (100*(gift.rest/gift.anteile));
+                var collected = 100-(100*(gift.rest/gift.anteile));
+                if(collected==0){
+                    collected = 0;
+                    restprice = "100%";
+                }else{
+                    collected = collected + "%";
+                    restprice = restprice + "%";
+                }
+                if(gift.type==1){var online = "Beitrag"}
 
-                template =  '<div class="gift">';
+                template =  '<div class="gift gift-'+i+'">';
                 template +=     '<div class="teaser-image" style="background-image:url('+gift.image+')">';
                 template +=         '<div class="price">'+gift.price+'<br>CHF</div>';
                 template +=     '</div>';
-                if(gift.partial == 1){
-                    template +=     '<div class="diagramm">';
-                    template +=         '<div class="rest" data-restprice="'+restprice+'"></div>';
-                    template +=     '</div>';
-                }
                 template +=     "<h1>"+gift.name+"</h1>";
-
-                template +=     '<p>'+gift.text+'</p>';
-                template +=     '<table><tr>';
-                template +=     '<td>'+gift.anteile+'</td><td>'+gift.rest+'</td><td>'+(gift.price/gift.anteile)+'</td>';
-                template +=     '</tr><tr><td>Anteile</td><td>Verfügbar</td><td>CHF</td></tr></table>';
-                template +=     '<a href="schenken.html?product='+gift.id+'" class="gift-button">Schenken '+online+'</a>';
+                var text =  gift.text;
+                if(text.length > 250){
+                    text = text.substr(0,250);
+                    text += "...";
+                }
+                template +=     '<p>'+text+'</p>';
+                template +=     '<p class="sum"></p>';
+            template +=         '<div class="range-wrapper"><table><tr><td style="width:'+collected+'"><div class="range-slider" ></div></td><td style="width:'+restprice+'"><input data-rangeslider name="asdfasdf" type="range" min="10" max="'+(gift.rest*(gift.price/gift.anteile))+'" step="10" value="10" data-orientation="horizontal"></td></tr></table></div>';
+            template +=     '<a href="schenken.html?product='+gift.id+'" class="gift-button">'+online+' Schenken</a>';
                 template +=  '</div>';
 
+
+
                 $(".container-flex").append(template);
+
+
+                $('input[type="range"]').rangeslider({
+                    polyfill: false,
+                    onSlide: function(position, value) {
+                        changeValue(this.identifier, value)
+                    },
+                });
+
             }
-        });
-        $(".rest").each(function(){
-            $(this).width($(this).data("restprice")+"%");
+
+            i = i+1;
         });
     });
+
+    function changeValue(e, value){
+        var myId = e;
+        myId = e.slice(15);
+        $(".gift-"+myId).find(".sum").html(value);
+    }
 
 });
