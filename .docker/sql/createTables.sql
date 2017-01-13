@@ -19,6 +19,7 @@ CREATE TABLE `submits` (
   `ort`  VARCHAR(200)      NOT NULL DEFAULT '',
   `email`  VARCHAR(200)      NOT NULL DEFAULT '',
   `text`  TEXT(999)      NOT NULL DEFAULT '',
+  `pay`  INT(11)      NOT NULL,
   `anteile`  INT(11)      NOT NULL,
   `product` INT(11) UNSIGNED        NOT NULL,
   PRIMARY KEY (`id`)

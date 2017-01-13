@@ -1,17 +1,13 @@
 $("#add-card").validate({
     rules: {
-        name: "required",
+        title: "required",
         image: "required",
-        price: "required",
-        anteile: {
-            required: "input#partial:checked"
-        }
+        price: "required"
     },
     messages: {
-        name: "Bitte füllen Sie dieses Feld aus.",
+        title: "Bitte füllen Sie dieses Feld aus.",
         image: "Bitte füllen Sie dieses Feld aus.",
-        price: "Bitte füllen Sie dieses Feld aus.",
-        anteile: "Bitte füllen Sie dieses Feld aus."
+        price: "Bitte füllen Sie dieses Feld aus."
     },
     ignore: ".ignore",
     submitHandler: function(){formSent()}

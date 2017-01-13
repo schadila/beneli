@@ -15,14 +15,14 @@ addcard = function (onSubmit) {
     var endpoint = "./php/API.php/addcard";
 
     var active = $("input[name='active']").val();
-    var name = $("input[name='name']").val();
+    var name = $("input[name='title']").val();
     var text = simplemde.options.previewRender(simplemde.value());
     var image = $("input[name='image']").val();
     var url = $("input[name='url']").val();
     var price = $("input[name='price']").val();
     var anteile = $("input[name='anteile']").val();
     var partial = $("input[name='partial']:checked").val();
-    var type = $("input[name='type']:checked").val();
+    var type = partial;
     if(!type){
         type = 0;
     }
@@ -67,7 +67,15 @@ give = function (onSubmit) {
     var ort = $("input[name='ort']").val();
     var anteile = $("input[type='range']").val()/10;
     var text = $("textarea[name='desc']").val();
+    var pay = $("input[name='pay']").val();
+    if(!pay) pay = 0;
     var product = $("input[name='product']").val();
+
+    setCookie("vorname", vorname);
+    setCookie("nachname", name);
+    setCookie("email", email);
+    setCookie("adresse", adresse);
+    setCookie("ort", ort);
 
     var data = {
         'vorname': vorname,
@@ -77,6 +85,7 @@ give = function (onSubmit) {
         'ort': ort,
         'anteile': anteile,
         'text': text,
+        'pay': pay,
         'product': product
     };
 
@@ -88,13 +97,13 @@ give = function (onSubmit) {
                 $(".message.fail").html("Es ist nur noch "+res.anteile+" Anteil verfügbar.");
             }else if(res.anteile==0){
                 $(".message.fail").html("Ups, das ging aber schnell. Jemand ist Dir zuvorgekommen. Leider sind keine Anteile mehr verfügbar. Aber es gibt noch andere Geschenke!");
-                $("form#schenken").addClass("hide");
+                $("form#schenken, .cookie, .cookie-data").addClass("hide");
             }else{
                 $(".message.fail").html("Es sind nur noch "+res.anteile+" Anteile verfügbar.");
             }
 
         }else{
-            $(".message.fail, form#schenken").addClass("hide");
+            $(".message.fail, form#schenken, .cookie, .cookie-data").addClass("hide");
             $(".message.success.hide").removeClass("hide");
             console.log(res.success + " | noch verfügbare Anteile: "+res.anteile);
         }

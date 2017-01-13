@@ -6,40 +6,59 @@
         <img id="product-image" src=""/>
     </div>
     <p id="product-text"></p>
-    <br>
     <a id="product-link" src="" target="_blank" class="submit">Produkt-Link</a>
+    <br>
     <br><br>
     <p class="message success hide">Vielen Dank! Wir haben Dir in diesem Augenblick eine E-Mail gesendet mit unseren Kontoangaben.</p>
     <p class="message fail hide"></p>
+    <p class="cookie"><span class="cookie-data"></span> <a class="cookie-edit" href="javascript:showCookieContent()">Daten ändern</a></p>
+
     <form class="schenken-form hide" id="schenken" onsubmit="javascript:return false">
+        <div class="cookie-content-form">
+            <table>
+                <tr>
+                    <td>
+                        <label for="vorname" class="description">Vorname:</label>
+                        <input type="text" name="vorname" class="" placeholder="">
+                    </td>
+                    <td>
+                        <label for="name" class="description">Nachname:</label>
+                        <input type="text" name="name" class="" placeholder="">
+                    </td>
+                </tr>
+            </table>
+
+
+            <table>
+                <tr>
+                    <td>
+                        <label for="adresse" class="description">Adresse:</label>
+                        <input type="text" name="adresse" class="required" placeholder="">
+                    </td>
+                    <td>
+                        <label for="ort" class="description">PLZ/Ort:</label>
+                        <input type="text" name="ort" class="required" placeholder="">
+                    </td>
+                </tr>
+            </table>
+
+
+            <label for="email" class="description">E-Mail:</label>
+            <input type="email" name="email" class="required" placeholder="">
+
+
+        </div>
+
         <table>
             <tr>
                 <td>
-                    <label for="vorname" class="description">Vorname:</label>
-                    <input type="text" name="vorname" class="" placeholder="">
-                </td>
-                <td>
-                    <label for="name" class="description">Nachname:</label>
-                    <input type="text" name="name" class="" placeholder="">
-                </td>
-            </tr>
-        </table>
 
-
-        <label for="adresse" class="description">Adresse:</label>
-        <input type="text" name="adresse" class="required" placeholder="">
-
-        <label for="ort" class="description">PLZ/Ort:</label>
-        <input type="text" name="ort" class="required" placeholder="">
-
-        <label for="email" class="description">E-Mail:</label>
-        <input type="email" name="email" class="required" placeholder="">
-        <table>
-            <tr>
-                <td>
-                    <label for="anteile" class="description">Anteile:</label><br>
+                    <label for="anteile" class="description">Betrag:</label><br>
                     <table id="range"><tr><td style="padding-right: 0;"><div class="range-slider" ></div></td><td style="padding-left: 0;"><input data-rangeslider name="" type="range" min="0" max="40" step="10" value="0" data-orientation="horizontal"></td></tr></table>
-
+                    <section class="checkbox-section pay-checkbox">
+                        <input type="checkbox" name="pay" id="pay" value="1"><label for="pay">Geldbetrag schenken</label>
+                        <p>Du schenkst dem Brautpaar nur den Geldbetrag. Das Brautpaar kauft sich dann das Geschenk selber.</p>
+                    </section>
                 </td>
                 <td>
                     <label for="anteile-span" class="description">Summe:</label><br>
@@ -48,12 +67,15 @@
             </tr>
         </table>
 
-        <label for="desc" class="description">Nachricht:</label>
+
+        <label for="desc" class="description">Nachricht an Brautpaar <small>(Wird dem Brautpaar per E-Mail zugestellt)</small>:</label><br>
         <textarea name="desc" class="" placeholder="" cols="60" rows="10"></textarea>
+
+
 
         <input type="hidden" class=" required" name="product" id="product" placeholder=""/>
 <br><br>
-        <button type="submit" class="submit">Betrag Schenken</button>
+        <button type="submit" class="submit">Schenken</button>
     </form>
 
 </div>

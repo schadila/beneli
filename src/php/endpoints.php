@@ -60,6 +60,7 @@ $app->post('/give', function (\Symfony\Component\HttpFoundation\Request $req) us
                 'adresse' => $req->get('adresse'),
                 'ort' => $req->get('ort'),
                 'text' => $req->get('text'),
+                'pay' => $req->get('pay'),
                 'anteile' => $req->get('anteile'),
                 'product' => $req->get('product')
             ]);
