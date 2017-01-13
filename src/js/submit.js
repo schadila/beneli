@@ -65,7 +65,7 @@ give = function (onSubmit) {
     var email = $("input[name='email']").val();
     var adresse = $("input[name='adresse']").val();
     var ort = $("input[name='ort']").val();
-    var anteile = $("input[name='anteile']").val();
+    var anteile = $("input[type='range']").val()/10;
     var text = $("textarea[name='desc']").val();
     var product = $("input[name='product']").val();
 

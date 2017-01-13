@@ -21,7 +21,7 @@ $(document).ready(function(){
                     collected = collected + "%";
                     restprice = restprice + "%";
                 }
-                if(gift.type==1){var online = "Beitrag"}
+                if(gift.type==1){var online = "Betrag"}
 
                 template =  '<div class="gift gift-'+i+'">';
                 template +=     '<div class="teaser-image" style="background-image:url('+gift.image+')">';
@@ -34,9 +34,14 @@ $(document).ready(function(){
                     text += "...";
                 }
                 template +=     '<p>'+text+'</p>';
-                template +=     '<p class="sum"></p>';
-            template +=         '<div class="range-wrapper"><table><tr><td style="width:'+collected+'"><div class="range-slider" ></div></td><td style="width:'+restprice+'"><input data-rangeslider name="asdfasdf" type="range" min="10" max="'+(gift.rest*(gift.price/gift.anteile))+'" step="10" value="10" data-orientation="horizontal"></td></tr></table></div>';
-            template +=     '<a href="schenken.html?product='+gift.id+'" class="gift-button">'+online+' Schenken</a>';
+                if(gift.type==1){
+                    template +=     '<p class="sum">CHF 0</p>';
+                    template +=         '<div class="range-wrapper"><table><tr><td style="width:'+collected+'"><div class="range-slider" ></div></td><td style="width:'+restprice+'"><input data-rangeslider name="asdfasdf" type="range" min="0" max="'+(gift.rest*(gift.price/gift.anteile))+'" step="10" value="0" data-orientation="horizontal"></td></tr></table></div>';
+                    template +=     '<p style="text-align: center">'+((gift.anteile-gift.rest)*10)+'.- von '+Math.round(gift.price)+'.- Fr bereits verschenkt</p>';
+                }else{
+                    template +=     '<p class="sum">CHF '+gift.price+'</p>';
+                }
+                template +=     '<a href="schenken.html?product='+gift.id+'" class="gift-button">'+online+' Schenken</a>';
                 template +=  '</div>';
 
 
@@ -44,10 +49,13 @@ $(document).ready(function(){
                 $(".container-flex").append(template);
 
 
-                $('input[type="range"]').rangeslider({
+
+
+
+                $('.gift input[type="range"]').rangeslider({
                     polyfill: false,
                     onSlide: function(position, value) {
-                        changeValue(this.identifier, value)
+                        changeValue(this.identifier, value, gift.id, "schenken.html")
                     },
                 });
 
@@ -57,10 +65,14 @@ $(document).ready(function(){
         });
     });
 
-    function changeValue(e, value){
+    function changeValue(e, value, id, href){
         var myId = e;
         myId = e.slice(15);
-        $(".gift-"+myId).find(".sum").html(value);
+        $(".gift-"+myId).find(".sum").html("CHF "+value);
+        var url = href+"?product="+id+"&pay="+value;
+        console.log(url);
+        $(".gift-"+myId+" .gift-button").attr("href", url);
+
     }
 
 });
