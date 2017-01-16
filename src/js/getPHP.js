@@ -31,7 +31,7 @@ $(document).ready(function(){
 
                 template =  '<div class="gift gift-'+i+'">';
                 template +=     '<div class="teaser-image" style="background-image:url('+gift.image+')">';
-                template +=         '<div class="price">'+gift.price+'<br>CHF</div>';
+                template +=         '<a class="edit button" href="edit-card.html?product='+gift.id+'">Bearbeiten</a>';
                 template +=     '</div>';
                 template +=     '<h1><a class="no-underline" href="schenken.html?product='+gift.id+'&pay=0">'+gift.name+'</a></h1>';
                 var text =  gift.text;

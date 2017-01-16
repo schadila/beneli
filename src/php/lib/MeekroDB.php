@@ -19,9 +19,9 @@
 
 class DB {
     // initial connection
-    public static $dbName = '';
-    public static $user = '';
-    public static $password = '';
+    public static $dbName = 'beneli';
+    public static $user = 'web404';
+    public static $password = 'swcfE8dejx';
     public static $host = 'localhost';
     public static $port = 3306; //hhvm complains if this is null
     public static $encoding = 'utf8';
@@ -108,9 +108,9 @@ class DB {
 
 class MeekroDB {
     // initial connection
-    public $dbName = '';
-    public $user = '';
-    public $password = '';
+    public $dbName = 'beneli';
+    public $user = 'web404';
+    public $password = 'swcfE8dejx';
     public $host = 'localhost';
     public $port = 3306;
     public $encoding = 'latin1';

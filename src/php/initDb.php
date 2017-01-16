@@ -5,13 +5,15 @@ date_default_timezone_set('Europe/Zurich');
 require_once('lib/silex/vendor/autoload.php');
 require_once('lib/MeekroDB.php');
 
-if (strpos($_SERVER["SERVER_NAME"], "appenzeller") !== FALSE) {
-  $env = "LIVE";
 
+
+if (strpos($_SERVER["SERVER_NAME"], "web404.login-47.hoststar.ch") !== FALSE) {
+
+  $env = "LIVE";
   // live-server!
   DB::$dbName = 'beneli';
-  DB::$user = 'beneli';
-  DB::$password = 'beneli';
+  DB::$user = 'web404';
+  DB::$password = 'swcfE8dejx';
   DB::useDB(DB::$dbName);
 
 }
@@ -23,6 +25,7 @@ elseif (strpos($_SERVER["SERVER_NAME"], "contexta04.nine.ch")) {
   DB::$user = 'beneli';
   DB::$password = 'beneli';
   DB::useDB(DB::$dbName);
+    echo $_SERVER["SERVER_NAME"];
 
 }
 else {

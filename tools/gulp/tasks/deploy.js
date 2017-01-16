@@ -27,9 +27,10 @@ gulp.task('deploy-dev', ['build-dev'], function () {
 
 gulp.task('deploy-stage', ['build'], function () {
 
-    options.hostname = 'contexta04.nine.ch';
-    options.username = 'dev';
-    options.destination = '/home/dev/www/stage-app-rezepte/';
+    options.hostname = 'ftp.login-47.hoststar.ch';
+    options.username = 'web404';
+    options.password = 'Gx4$tu*e9K';
+    options.destination = '/html/stage-beneli/';
 
     return gulp
         .src(['build/**/*', 'build/.*'])

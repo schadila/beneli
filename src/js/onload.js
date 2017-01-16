@@ -3,9 +3,11 @@ $(document).ready(function () {
         $("input").addClass("ie10");
     }
 
-    var product = getParameterByName("product");
-    $("#schenken #product").val(product);
-    getProduct(product);
+    var url = window.location.pathname;
+    var filename = url.split('/').pop().split('#')[0].split('?')[0];
+
+    if(filename == "schenken.html") getproductdata(switchForm);
+    if(filename == "edit-card.html") getproductdata(editForm);
 });
 
 function getParameterByName(name, url) {
@@ -60,7 +62,33 @@ function goToForm(){
 
 }
 
+function editForm(data){
+
+    var title = $("input[name='title']");
+    var text = $("textarea[name='desc']");
+    var image = $("input[name='image']");
+    var url = $("input[name='url']");
+    var price = $("input[name='price']");
+    var partial = $("input[name='partial']");
+    var product = $("input[name='product']");
+    var rest = $("input[name='rest']");
+    var anteile = $("input[name='anteile']");
+
+    title.val(data.name);
+    text.val(data.text);
+    simplemde.value(data.text);
+    image.val(data.image);
+    url.val(data.url);
+    price.val(data.price);
+    if(data.partial==1) partial.prop('checked', true);
+    product.val(data.id);
+}
+
 function switchForm(data){
+
+
+    var product = getParameterByName("product");
+    $("#schenken #product").val(product);
 
     var vorname = getCookie("vorname");
     var nachname = getCookie("nachname");
@@ -94,7 +122,7 @@ function switchForm(data){
 
     //Auffüllen der Geschenken-Parameter
     $("#product-title").html(data.name);
-    $("#product-text").html(data.text);
+    $("#product-text").html(simplemde.options.previewRender(data.text));
     $("#product-image").attr("src", data.image);
     $("#product-link").attr("href", data.url);
     var pay = getParameterByName("pay");
@@ -125,6 +153,8 @@ function switchForm(data){
             $("#anteile-span").html("<b>CHF "+value+"</b>");
         }
     });
+
+
 
     $("#product-image").load(function(){
         goToForm();

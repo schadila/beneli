@@ -35,3 +35,20 @@ $("#schenken").validate({
     ignore: ".ignore",
     submitHandler: function(){give()}
 });
+
+$("#edit-card").validate({
+    rules: {
+        title: "required",
+        image: "required",
+        url: "required",
+        price: "required"
+    },
+    messages: {
+        title: "Bitte füllen Sie dieses Feld aus.",
+        image: "Bitte füllen Sie dieses Feld aus.",
+        url: "Bitte füllen Sie dieses Feld aus.",
+        price: "Bitte füllen Sie dieses Feld aus."
+    },
+    ignore: ".ignore",
+    submitHandler: function(){bearbeiten()}
+});

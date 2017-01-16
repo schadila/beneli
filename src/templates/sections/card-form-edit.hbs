@@ -1,8 +1,9 @@
+
 <div class="form container" id="form" xmlns="http://www.w3.org/1999/html">
-    <h1>Neues Geschenk hinzufügen</h1>
-    <p class="message success hide">Die Karte wurde erfolgreich hinzugefügt!</p>
+    <h1>Geschenk bearbeiten</h1>
+    <p class="message success hide">Das Geschenk wurde erfolgreich gespeichert!</p>
     <p class="message fail hide"></p>
-    <form class="add-card-form" id="add-card" onsubmit="javascript:return false">
+    <form class="edit-card-form" id="edit-card" onsubmit="javascript:return false">
 
         <label for="name" class="description">Titel:</label>
         <input type="text" name="title" class="required" placeholder="">
@@ -34,11 +35,12 @@
         <section class="checkbox-section types">
             <input type="checkbox" name="partial" id="partial" value="1"><label for="partial">Teilbezahlung</label><br>
             <input type="hidden" name="active" id="active" value="1">
+            <input type="hidden" name="product" id="product" value="">
         </section>
         <br>
         <br>
 
-        <button type="submit" class="submit">Speichern</button>
+        <button type="submit" name="save" class="submit">Speichern</button>
     </form>
 
 </div>

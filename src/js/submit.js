@@ -4,11 +4,16 @@ var simplemde = new SimpleMDE({
     spellChecker: false
 });
 
-like = function (rezeptId) {
-    var endpoint = "./php/API.php/like";
-    var data = {'rezept': rezeptId};
-    post(endpoint, data, getLikes);
-};
+getproductdata = function(onSubmit){
+    var product = getParameterByName("product");
+    var endpoint = "./php/API.php/getproduct";
+    var data = {
+        'product': product
+    }
+    $.get(endpoint, data, function (res) {
+        onSubmit(res[0]);
+    });
+}
 
 
 addcard = function (onSubmit) {
@@ -16,7 +21,7 @@ addcard = function (onSubmit) {
 
     var active = $("input[name='active']").val();
     var name = $("input[name='title']").val();
-    var text = simplemde.options.previewRender(simplemde.value());
+    var text = simplemde.value();
     var image = $("input[name='image']").val();
     var url = $("input[name='url']").val();
     var price = $("input[name='price']").val();
@@ -45,7 +50,7 @@ addcard = function (onSubmit) {
         'type': type
     };
 
-    $.post(endpoint, data, function(res, err){
+    $.get(endpoint, data, function(res, err){
         if(!res.success){
             console.log(res.success);
         }else{
@@ -56,8 +61,46 @@ addcard = function (onSubmit) {
     });
 };
 
+editcard = function (onSubmit) {
+    var endpoint = "./php/API.php/editcard";
+
+    var name = $("input[name='title']").val();
+    var text = simplemde.value();
+    var image = $("input[name='image']").val();
+    var url = $("input[name='url']").val();
+    var price = $("input[name='price']").val();
+    var anteile = $("input[name='price']").val()/10;
+    var partial = $("input[name='partial']:checked").val();
+    var product = $("input[name='product']").val();
+    var type = partial;
+    if(!type) type = 0;
+    if(!partial) partial = 0;
+    if(!anteile) anteile = 1;
+
+    var data = {
+        'name': name,
+        'text': text,
+        'image': image,
+        'url': url,
+        'price': price,
+        'anteile': anteile,
+        'partial': partial,
+        'type': type,
+        'product': product
+    };
+
+    $.post(endpoint, data, function(res, err){
+        if(!res.success){
+            console.log(res.success);
+        }else{
+            $(".message.success.hide").removeClass("hide");
+            console.log(res.success);
+        }
+    });
+};
 
 give = function (onSubmit) {
+    console.log("test");
     var endpoint = "./php/API.php/give";
 
     var vorname = $("input[name='vorname']").val();
@@ -89,7 +132,7 @@ give = function (onSubmit) {
         'product': product
     };
 
-    $.post(endpoint, data,  function (res, err) {
+    $.get(endpoint, data,  function (res, err) {
         if(!res.success){
             $(".message.success").addClass("hide");
             $(".message.fail.hide").removeClass("hide");
@@ -113,18 +156,8 @@ give = function (onSubmit) {
 // posts to endpoint
 // attach browser fingerprint to data obj.
 // executes callback on success if provided
-function post(endpoint, data, cb) {
+function get(endpoint, data, cb) {
         $.post(endpoint, data, function (res) {
             cb && cb(); // <- execute callback
         });
-}
-
-function getProduct(product){
-    var endpoint2 = "./php/API.php/getproduct";
-    var data = {
-        'product': product
-    }
-    $.get(endpoint2, data, function (res) {
-        switchForm(res[0]);
-    });
 }

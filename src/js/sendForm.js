@@ -4,3 +4,6 @@ function formSent(){
 function schenken() {
     give();
 }
+function bearbeiten() {
+    editcard();
+}

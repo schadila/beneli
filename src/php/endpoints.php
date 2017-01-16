@@ -18,7 +18,7 @@ $app->get('/gifts', function (\Symfony\Component\HttpFoundation\Request $req) us
 /**
  * 'likes' a recipe, updates 'like' if fingerprint has already voted
  */
-$app->post('/addcard', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
+$app->get('/addcard', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
 
     $res = DB::insertUpdate('products', [
         'name' => $req->get('name'),
@@ -37,12 +37,46 @@ $app->post('/addcard', function (\Symfony\Component\HttpFoundation\Request $req)
     return $app->json($response);
 });
 
-$app->post('/give', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
+$app->post('/editcard', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
 
-    $rest = DB::query('SELECT rest FROM products WHERE id=%i', $req->get("product"));
+    $productdata = DB::query('SELECT * FROM products WHERE id=%i', $req->get("product"));
+
+    foreach ($productdata as $row) {
+        $price = $req->get('price')-$row['price'];
+        $more = $price/10;
+        $rest = $row['rest']+$more;
+    }
+
+    $product = $req->get('product');
+
+    $res = DB::update('products', [
+        'name' => $req->get('name'),
+        'text' => $req->get('text'),
+        'image' => $req->get('image'),
+        'url' => $req->get('url'),
+        'price' => $req->get('price'),
+        'anteile' => $req->get('price')/10,
+        'rest' => $rest,
+        'partial' => $req->get('partial'),
+        'type' => $req->get('type')
+    ],'id=%i', $product);
+    $response = ['success' => $res];
+
+    return $app->json($response);
+});
+
+$app->get('/give', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
+
+    $rest = DB::query('SELECT * FROM products WHERE id=%i', $req->get("product"));
 
     foreach ($rest as $row) {
-        $abzug = $row['rest']-$req->get('anteile');
+
+        $rest = $row['rest'];
+        if($row['type']==0){
+            $abzug = 0;
+        }else{
+            $abzug = $rest-$req->get('anteile');
+        }
 
         if($abzug<0){
 
@@ -76,40 +110,6 @@ $app->post('/give', function (\Symfony\Component\HttpFoundation\Request $req) us
     }
 });
 
-
-/**
- * inserts user infos into db
- */
-$app->post('/teilnehmen', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
-    $fingerprint = $req->get('fingerprint');
-
-    $res = DB::insertUpdate('teilnehmer',
-        [
-            'rezept' => $req->get('rezept'),
-
-            'gender' => $req->get('gender'),
-            'firstName' => $req->get('firstName'),
-            'lastName' => $req->get('lastName'),
-
-            'street' => $req->get('street'),
-            'zip' => $req->get('zip'),
-            'city' => $req->get('city'),
-
-            'email' => $req->get('email'),
-            'newsletter' => $req->get('newsletter'),
-
-            'platform' => $req->get('platform'),
-
-            'ip' => $req->getClientIp(),
-            'fingerprint' => $fingerprint
-        ],
-        'fingerprint=%s', $fingerprint
-    );
-
-    $response = ['success' => true, 'result' => $res];
-    return $app->json($response);
-
-});
 
 
 function humanize($num, $precision = 1) {
