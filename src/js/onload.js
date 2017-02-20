@@ -8,6 +8,15 @@ $(document).ready(function () {
 
     if(filename == "schenken.html") getproductdata(switchForm);
     if(filename == "edit-card.html") getproductdata(editForm);
+
+    $(".container-flex").pinterest_grid({
+        no_columns: 4,
+        padding_x: 20,
+        padding_y: 20,
+        margin_bottom: 50,
+        single_column_breakpoint: 700
+    });
+
 });
 
 function getParameterByName(name, url) {
@@ -123,8 +132,9 @@ function switchForm(data){
     //Auffüllen der Geschenken-Parameter
     $("#product-title").html(data.name);
     $("#product-text").html(simplemde.options.previewRender(data.text));
-    $("#product-image").attr("src", data.image);
-    $("#product-link").attr("href", data.url);
+    $(".product-image-container").css("background-image", "url("+data.image+")");
+    if(data.url) $("#product-link").attr("href", data.url);
+    else $("#product-link").fadeOut();
     var pay = getParameterByName("pay");
     $("input[type='range']").attr("value", pay);
     $("input[type='range']").attr("max", data.rest*10);
@@ -161,6 +171,120 @@ function switchForm(data){
     });
 
 
+
+
     returnPrice();
 
 }
+
+$(document).ready(function(){
+    $(".select-drive").click(function(){
+        console.log("test");
+        onApiLoad();
+    });
+
+
+    // The Browser API key obtained from the Google Developers Console.
+    var developerKey = 'AIzaSyDMhyvflYkyIFAgiPEhT4qEhRl3kE-ALXo';
+
+    // The Client ID obtained from the Google Developers Console. Replace with your own Client ID.
+    var clientId = "75947531728-vua35k1om97krt1l8bn2j0o5497nat17.apps.googleusercontent.com";
+
+    // Scope to use to access user's photos.
+    var scope = ["https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/photos https://www.googleapis.com/auth/drive.appdata"];
+
+    var appId = "75947531728";
+    var pickerApiLoaded = false;
+    var oauthToken;
+
+    // Use the API Loader script to load google.picker and gapi.auth.
+
+    function onApiLoad() {
+
+        gapi.load('auth', {'callback': onAuthApiLoad});
+        gapi.load('picker', {'callback': onPickerApiLoad});
+
+    }
+
+    function onAuthApiLoad() {
+        window.gapi.auth.authorize(
+            {
+                'client_id': clientId,
+                'scope': scope,
+                'immediate': false
+            },
+            handleAuthResult);
+    }
+
+    function onPickerApiLoad() {
+        pickerApiLoaded = true;
+        createPicker();
+    }
+
+    function handleAuthResult(authResult) {
+        if (authResult && !authResult.error) {
+            oauthToken = authResult.access_token;
+            createPicker();
+        }
+    }
+
+    // Create and render a Picker object for picking user Photos.
+    function createPicker() {
+        if (pickerApiLoaded && oauthToken) {
+            var view = new google.picker.View(google.picker.ViewId.DOCS_IMAGES);
+            // view.setMimeTypes("image/png,image/jpeg,image/jpg");
+            view.setParent("0B_087vROMGnrMVYtZExpaUlDaGs");
+            var picker = new google.picker.PickerBuilder()
+                // .enableFeature(google.picker.Feature.NAV_HIDDEN)
+                .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+                .setAppId(appId)
+                .setOAuthToken(oauthToken)
+                .addView(view)
+                // .addView(new google.picker.DocsUploadView())
+                .setDeveloperKey(developerKey)
+                .setCallback(pickerCallback)
+                .build();
+            picker.setVisible(true);
+            // picker.enableFeature(google.picker.Feature.MULTISELECT_ENABLED);
+
+        }
+    }
+
+    // A simple callback implementation.
+    function pickerCallback(data) {
+        if (data.action == google.picker.Action.PICKED) {
+            var fileId = data.docs[0].id;
+            $("#image").val('https://drive.google.com/uc?export=view&id='+fileId);
+
+//                    $.ajax({
+//                        // `url`
+//                        url: 'https://drive.google.com/uc?export=view&id='+fileId,
+//                        type: "GET",
+//                        dataType:"json",
+//                        // `file`, data-uri, base64
+////                        data: {
+////                            json: JSON.stringify({
+////                                "file": "data:text/plain;base64,YWJj"
+////                            })
+////                        },
+//                        // `custom header`
+////                        headers: {
+////                            "Authorization": 'Bearer '+ oauthToken
+////                        },
+//                        success: function (data) {
+////                            $('#drive img').attr('src', data);
+//                            console.log(fileId);
+//                        },
+//                        error: function (jqxhr, textStatus, errorThrown) {
+//                            console.log(textStatus, errorThrown)
+//                        }
+//                    });
+
+//                    $.get("https://www.googleapis.com/drive/v2/files/"+fileId, {
+//                        headers: {'Authorization': 'Bearer '+oauthToken}
+//                    });
+
+        }
+    }
+
+});

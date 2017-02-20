@@ -40,13 +40,13 @@ $("#edit-card").validate({
     rules: {
         title: "required",
         image: "required",
-        url: "required",
+        // url: "required",
         price: "required"
     },
     messages: {
         title: "Bitte füllen Sie dieses Feld aus.",
         image: "Bitte füllen Sie dieses Feld aus.",
-        url: "Bitte füllen Sie dieses Feld aus.",
+        // url: "Bitte füllen Sie dieses Feld aus.",
         price: "Bitte füllen Sie dieses Feld aus."
     },
     ignore: ".ignore",

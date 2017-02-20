@@ -10,9 +10,7 @@ $(document).ready(function(){
 
             if(gift.rest>0 && gift.active == 1){
                 var template;
-                var select;
                 var priceFull;
-                var online = "";
                 var restprice = (100*(gift.rest/gift.anteile));
                 var collected = 100-(100*(gift.rest/gift.anteile));
                 if(collected==0){
@@ -27,13 +25,14 @@ $(document).ready(function(){
                         restprice = restprice + "%";
                     }
                 }
-                if(gift.type==1){var online = "Betrag"}
+                if(gift.type==1) priceFull=10;
+                else priceFull = gift.price;
 
                 template =  '<div class="gift gift-'+i+'">';
                 template +=     '<div class="teaser-image" style="background-image:url('+gift.image+')">';
                 template +=         '<a class="edit button" href="edit-card.html?product='+gift.id+'">Bearbeiten</a>';
                 template +=     '</div>';
-                template +=     '<h1><a class="no-underline" href="schenken.html?product='+gift.id+'&pay=0">'+gift.name+'</a></h1>';
+                template +=     '<h1><a class="no-underline" href="schenken.html?product='+gift.id+'&pay='+Math.round(priceFull)+'">'+gift.name+'</a></h1>';
                 var text =  gift.text;
                 if(text.length > 250){
                     text = text.substr(0,250);
@@ -50,7 +49,7 @@ $(document).ready(function(){
                     template +=     '<p class="sum">CHF '+gift.price+'</p>';
                     priceFull = gift.price;
                 }
-                template +=     '<a href="schenken.html?product='+gift.id+'&pay='+priceFull+'&toform=true" class="gift-button gift-button-weiter">Weiter</a>';
+                template +=     '<a href="schenken.html?product='+gift.id+'&pay='+priceFull+'&toform=true" class="gift-button gift-button-weiter">Schenken</a>';
                 // template +=     '<a href="schenken.html?product='+gift.id+'&pay='+priceFull+'&toform=false" class="gift-button gift-button-details"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>';
                 template +=  '</div>';
 
@@ -69,7 +68,7 @@ $(document).ready(function(){
                             $(myClass + " .range-slider").css("background-color", "rgba(120,200,10, 1)");
                         }else{
                             $(myClass + " .rangeslider__fill").css("background-color", "rgba(171,153,126,1)");
-                            $(myClass + " .range-slider").css("background-color", "rgba(0,0,0, .2)");
+                            $(myClass + " .range-slider").css("background-color", "rgba(0,0,0, .65)");
 
                         }
                     },

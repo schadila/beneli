@@ -15,9 +15,31 @@ getproductdata = function(onSubmit){
     });
 }
 
+deletecard = function(onSubmit){
+    var endpoint = "./php/API.php/deletecard";
+    var product = getParameterByName("product");
+
+    var data = {
+        'product': product
+    }
+
+    $.get(endpoint, data, function(res, err){
+        if(!res.success){
+            console.log(res.success);
+        }else{
+            $("#edit-card").addClass("hide");
+            $(".message.success.hide").removeClass("hide");
+            console.log(res.success);
+        }
+    });
+}
+
 
 addcard = function (onSubmit) {
     var endpoint = "./php/API.php/addcard";
+    // var form = $('#add-card')[0];
+    // var formData = new FormData(form);
+    // console.log(formData);
 
     var active = $("input[name='active']").val();
     var name = $("input[name='title']").val();
@@ -26,7 +48,9 @@ addcard = function (onSubmit) {
     var url = $("input[name='url']").val();
     var price = $("input[name='price']").val();
     var anteile = $("input[name='anteile']").val();
+    // var file = $("input[name='file']")[0].files[0];
     var partial = $("input[name='partial']:checked").val();
+
     var type = partial;
     if(!type){
         type = 0;
@@ -49,6 +73,19 @@ addcard = function (onSubmit) {
         'partial': partial,
         'type': type
     };
+
+    // $.ajax({
+    //     url: endpoint,
+    //     type: "GET",
+    //     data: new FormData($('#add-card')[0]),
+    //     contentType: false,
+    //     cache: false,
+    //     processData:false,
+    //     success: function(data) {
+    //         $("form#add-card").addClass("hide");
+    //         $(".message.success.hide").removeClass("hide");
+    //     }
+    // });
 
     $.get(endpoint, data, function(res, err){
         if(!res.success){

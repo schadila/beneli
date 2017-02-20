@@ -7,3 +7,7 @@ function schenken() {
 function bearbeiten() {
     editcard();
 }
+
+function loeschen() {
+    deletecard();
+}

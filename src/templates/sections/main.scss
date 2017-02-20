@@ -2,24 +2,17 @@
 
 .grid-container-1{
   width: 100%;
-  max-width: 1024px;
+  max-width: 80%;
   margin: 0 auto;
   margin-top: 100px;
+  -webkit-column-break-inside:avoid;
 
   .ui-slider-range{
     min-width: 20%;
   }
   .container-flex{
+    position: relative;
     max-width: none;
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
     overflow: visible;
   }
 
@@ -86,17 +79,19 @@
   }
 
   .gift{
-    display: inline-block;
-    position: relative;
+    position: absolute;
     background-color: #fff;
     width: 100%;
 
     transition: all .3s ease;
-    margin-bottom: 20px;
-
     border-radius: 5px;
     overflow: hidden;
     transform: translateZ(0);
+  }
+
+  .gift:hover{
+    transform: scale(1.02);
+    z-index: 100;
   }
 
   .gift img{
@@ -110,6 +105,7 @@
     margin-bottom: 30px;
     padding: 0 20px;
     word-wrap:break-word;
+    line-height: 1em;
   }
 
   .gift p{

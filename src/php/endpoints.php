@@ -20,6 +20,27 @@ $app->get('/gifts', function (\Symfony\Component\HttpFoundation\Request $req) us
  */
 $app->get('/addcard', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
 
+//    require_once  "bulletproof.php";
+
+
+
+//    $image = new Bulletproof\Image($file);
+//    $image->setLocation("../img/upload/");
+//
+//    if($image){
+//        $upload = $image->upload();
+//
+//        if($upload){
+//            echo "erfolgreich";
+//        }else{
+//            echo $image["error"];
+//        }
+//    }
+
+//    $f=$req->get('name');
+//    var_dump("Test: ", $req->get('name'));
+//    DIE;
+
     $res = DB::insertUpdate('products', [
         'name' => $req->get('name'),
         'text' => $req->get('text'),
@@ -32,6 +53,7 @@ $app->get('/addcard', function (\Symfony\Component\HttpFoundation\Request $req) 
         'type' => $req->get('type'),
         'active' => $req->get('active')
     ]);
+
     $response = ['success' => $res];
 
     return $app->json($response);
@@ -62,6 +84,12 @@ $app->post('/editcard', function (\Symfony\Component\HttpFoundation\Request $req
     ],'id=%i', $product);
     $response = ['success' => $res];
 
+    return $app->json($response);
+});
+
+$app->get('/deletecard', function (\Symfony\Component\HttpFoundation\Request $req) use ($app) {
+    $res = DB::delete('products', "id=%i", $req->get("product"));
+    $response = ['success' => $res];
     return $app->json($response);
 });
 
