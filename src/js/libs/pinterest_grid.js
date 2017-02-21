@@ -22,7 +22,8 @@
             padding_y: 10,
             no_columns: 3,
             margin_bottom: 50,
-            single_column_breakpoint: 700
+            single_column_breakpoint: 768,
+            two_columns_breakpoint: 1400
         },
         columns,
         $article,
@@ -40,21 +41,35 @@
         var self = this,
             resize_finish;
 
+        $(document).ready(function(){
+            $(window).resize();
+        });
+
         $(window).resize(function() {
+            makeLayoutChange();
+        });
+
+        function makeLayoutChange(){
+            console.log("resize");
             clearTimeout(resize_finish);
             resize_finish = setTimeout( function () {
                 self.make_layout_change(self);
-            }, 11);
-        });
+            }, 1);
+        }
 
-        self.make_layout_change(self);
 
-        setTimeout(function() {
-            $(window).resize();
-        }, 500);
+
+        var loaded = setInterval(function() {
+            var flexCount = $(".container-flex > div").length;
+            if(flexCount>1){
+                console.log(flexCount);
+                clearInterval(loaded);
+                $(window).resize();
+            }
+        }, 10);
     };
 
-    Plugin.prototype.calculate = function (single_column_mode) {
+    Plugin.prototype.calculate = function (single_column_mode, two_columns_mode) {
         var self = this,
             tallest = 0,
             row = 0,
@@ -63,9 +78,11 @@
             $article = $(this.element).children();
 
         if(single_column_mode === true) {
-            article_width = $container.width() - self.options.padding_x;
-        } else {
-            article_width = ($container.width() - self.options.padding_x * self.options.no_columns) / self.options.no_columns;
+            article_width = container_width;
+        } else if(two_columns_mode == true){
+            article_width = (container_width- self.options.padding_x) / 2;
+        } else{
+            article_width = (container_width - self.options.padding_x * (self.options.no_columns-1)) / self.options.no_columns;
         }
 
         $article.each(function() {
@@ -86,6 +103,10 @@
                 current_column = (index % columns);
             } else {
                 current_column = 0;
+            }
+
+            if(two_columns_mode==true){
+                columns = 2;
             }
 
             for(var t = 0; t < columns; t++) {
@@ -118,7 +139,7 @@
         });
 
         this.tallest($container);
-        $(window).resize();
+        // $(window).resize();
     };
 
     Plugin.prototype.tallest = function (_container) {
@@ -139,10 +160,13 @@
 
     Plugin.prototype.make_layout_change = function (_self) {
         if($(window).width() < _self.options.single_column_breakpoint) {
-            _self.calculate(true);
+            _self.calculate(true, false);
+        } else if($(window).width() < _self.options.two_columns_breakpoint) {
+            _self.calculate(false, true);
         } else {
-            _self.calculate(false);
+            _self.calculate(false, false);
         }
+
     };
 
     $.fn[pluginName] = function (options) {

@@ -9,15 +9,19 @@ $(document).ready(function () {
     if(filename == "schenken.html") getproductdata(switchForm);
     if(filename == "edit-card.html") getproductdata(editForm);
 
+
     $(".container-flex").pinterest_grid({
         no_columns: 4,
         padding_x: 20,
         padding_y: 20,
         margin_bottom: 50,
-        single_column_breakpoint: 700
-    });
+        single_column_breakpoint: 768,
+        two_columns_breakpoint: 1400
 
+    });
 });
+
+
 
 function getParameterByName(name, url) {
     if (!url) {
@@ -139,6 +143,8 @@ function switchForm(data){
     $("input[type='range']").attr("value", pay);
     $("input[type='range']").attr("max", data.rest*10);
 
+
+
     var restprice = (100*(data.rest/data.anteile));
     var collected = 100-(100*(data.rest/data.anteile));
     if(collected==0){
@@ -164,6 +170,11 @@ function switchForm(data){
         }
     });
 
+    var percentSliderBar = pay/(data.rest*10);
+    var widthSliderFullWidth = $(".rangeslider--horizontal").outerWidth();
+    var percentCurrent = percentSliderBar*widthSliderFullWidth;
+    $(".rangeslider__fill").width(percentCurrent);
+    $(".rangeslider__handle").css("left", (percentCurrent-($(".rangeslider__handle").outerWidth()/2))+"px");
 
 
     $("#product-image").load(function(){
