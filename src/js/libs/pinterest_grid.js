@@ -80,7 +80,7 @@
         if(single_column_mode === true) {
             article_width = container_width;
         } else if(two_columns_mode == true){
-            article_width = (container_width- self.options.padding_x) / 2;
+            article_width = (container_width- (self.options.padding_x*2)) / 3;
         } else{
             article_width = (container_width - self.options.padding_x * (self.options.no_columns-1)) / self.options.no_columns;
         }
@@ -106,7 +106,7 @@
             }
 
             if(two_columns_mode==true){
-                columns = 2;
+                columns = 3;
             }
 
             for(var t = 0; t < columns; t++) {

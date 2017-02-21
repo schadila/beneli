@@ -1,9 +1,21 @@
 /**
  * Created by nino.kueenzi on 09.01.17.
  */
-$(document).ready(function(){
+function showGifts(){
     var endpoint = "./php/API.php/gifts";
+    console.log("showGifts");
+
     $.get(endpoint, function (res) {
+
+        var addCard;
+        addCard = '<div class="gift edit">';
+        addCard += '<div class="teaser-image" style="background-image: url(https://cdn.shopify.com/s/files/1/1581/7661/articles/Gift_large.png?v=1485338945)"></div>';
+        addCard += '<h1>Neues Geschenk hinzufügen</h1>';
+        addCard += '<a href="add-card.html" class="gift-button">Hinzufügen</a>';
+        addCard += '</div>';
+
+        if(profile) $(".container-flex").append(addCard);
+        console.log("addCard prifle:"+profile);
 
         var i = 0;
         res.length && res.forEach(function (gift) {
@@ -30,8 +42,7 @@ $(document).ready(function(){
 
                 template =  '<div class="gift gift-'+i+'">';
                 template +=     '<div class="teaser-image" style="background-image:url('+gift.image+')">';
-                // template +=     '<iframe src="'+gift.image+'" width="200" height="150"></iframe>';
-                template +=         '<a class="edit button" href="edit-card.html?product='+gift.id+'">Bearbeiten</a>';
+                if(profile) template +=         '<a class="edit button" href="edit-card.html?product='+gift.id+'">Bearbeiten</a>';
                 template +=     '</div>';
                 template +=     '<h1><a class="no-underline" href="schenken.html?product='+gift.id+'&pay='+Math.round(priceFull)+'">'+gift.name+'</a></h1>';
                 var text =  gift.text;
@@ -85,4 +96,4 @@ $(document).ready(function(){
 
 
 
-});
+};

@@ -1,3 +1,5 @@
+var profile;
+
 $(document).ready(function () {
     if (Function('/*@cc_on return document.documentMode===10@*/')()) {
         $("input").addClass("ie10");
@@ -11,16 +13,37 @@ $(document).ready(function () {
 
 
     $(".container-flex").pinterest_grid({
-        no_columns: 4,
-        padding_x: 20,
-        padding_y: 20,
+        no_columns: 5,
+        padding_x: 40,
+        padding_y: 40,
         margin_bottom: 50,
         single_column_breakpoint: 768,
         two_columns_breakpoint: 1400
 
     });
+    showGifts();
+
+    // $(".login").click(function(){
+    //     location.reload();
+    // });
 });
 
+
+function onSignIn(googleUser) {
+    profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+    location.reload();
+}
 
 
 function getParameterByName(name, url) {
