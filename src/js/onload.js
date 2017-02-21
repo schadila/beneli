@@ -236,7 +236,7 @@ $(document).ready(function(){
 
             var uploadView = new google.picker.DocsUploadView();
             uploadView.setParent("0B_087vROMGnrMVYtZExpaUlDaGs");
-            
+
             var picker = new google.picker.PickerBuilder()
                 .setAppId(appId)
                 .setOAuthToken(oauthToken)
