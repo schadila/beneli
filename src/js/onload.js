@@ -232,15 +232,12 @@ $(document).ready(function(){
     function createPicker() {
         if (pickerApiLoaded && oauthToken) {
             var view = new google.picker.View(google.picker.ViewId.DOCS_IMAGES);
-            // view.setMimeTypes("image/png,image/jpeg,image/jpg");
             view.setParent("0B_087vROMGnrMVYtZExpaUlDaGs");
 
             var uploadView = new google.picker.DocsUploadView();
-            // view.setMimeTypes("image/png,image/jpeg,image/jpg");
             uploadView.setParent("0B_087vROMGnrMVYtZExpaUlDaGs");
+            
             var picker = new google.picker.PickerBuilder()
-                // .enableFeature(google.picker.Feature.NAV_HIDDEN)
-                // .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
                 .setAppId(appId)
                 .setOAuthToken(oauthToken)
                 .addView(view)
