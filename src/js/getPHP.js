@@ -30,6 +30,7 @@ $(document).ready(function(){
 
                 template =  '<div class="gift gift-'+i+'">';
                 template +=     '<div class="teaser-image" style="background-image:url('+gift.image+')">';
+                // template +=     '<iframe src="'+gift.image+'" width="200" height="150"></iframe>';
                 template +=         '<a class="edit button" href="edit-card.html?product='+gift.id+'">Bearbeiten</a>';
                 template +=     '</div>';
                 template +=     '<h1><a class="no-underline" href="schenken.html?product='+gift.id+'&pay='+Math.round(priceFull)+'">'+gift.name+'</a></h1>';

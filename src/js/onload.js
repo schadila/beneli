@@ -234,13 +234,17 @@ $(document).ready(function(){
             var view = new google.picker.View(google.picker.ViewId.DOCS_IMAGES);
             // view.setMimeTypes("image/png,image/jpeg,image/jpg");
             view.setParent("0B_087vROMGnrMVYtZExpaUlDaGs");
+
+            var uploadView = new google.picker.DocsUploadView();
+            // view.setMimeTypes("image/png,image/jpeg,image/jpg");
+            uploadView.setParent("0B_087vROMGnrMVYtZExpaUlDaGs");
             var picker = new google.picker.PickerBuilder()
                 // .enableFeature(google.picker.Feature.NAV_HIDDEN)
-                .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+                // .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
                 .setAppId(appId)
                 .setOAuthToken(oauthToken)
                 .addView(view)
-                // .addView(new google.picker.DocsUploadView())
+                .addView(uploadView)
                 .setDeveloperKey(developerKey)
                 .setCallback(pickerCallback)
                 .build();
@@ -254,7 +258,8 @@ $(document).ready(function(){
     function pickerCallback(data) {
         if (data.action == google.picker.Action.PICKED) {
             var fileId = data.docs[0].id;
-            $("#image").val('https://drive.google.com/uc?export=view&id='+fileId);
+            // $("#image").val('https://drive.google.com/uc?export=view&id='+fileId);
+            $("#image").val('https://lh3.googleusercontent.com/d/'+fileId+'=w300');//-h150-p-k-nu?access_token='+oauthToken);
 
 //                    $.ajax({
 //                        // `url`
