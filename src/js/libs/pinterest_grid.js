@@ -50,7 +50,6 @@
         });
 
         function makeLayoutChange(){
-            console.log("resize");
             clearTimeout(resize_finish);
             resize_finish = setTimeout( function () {
                 self.make_layout_change(self);
@@ -62,7 +61,6 @@
         var loaded = setInterval(function() {
             var flexCount = $(".container-flex > div").length;
             if(flexCount>1){
-                console.log(flexCount);
                 clearInterval(loaded);
                 $(window).resize();
             }

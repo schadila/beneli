@@ -1,21 +1,24 @@
+var simplemde;
 
-var simplemde = new SimpleMDE({
-    hideIcons: ["guide", "heading", "quote", "link", "image", "side-by-side", "fullscreen"],
-    spellChecker: false
-});
+if ($("textarea").length) {
+    var simplemde = new SimpleMDE({
+        hideIcons: ["guide", "heading", "quote", "link", "image", "side-by-side", "fullscreen"],
+        spellChecker: false
+    });
+}
 
-getproductdata = function(onSubmit){
-    var product = getParameterByName("product");
+getproductdata = function (onSubmit) {
+    var product = getParameterByName("product"); //get Product ID from URL
     var endpoint = "./php/API.php/getproduct";
     var data = {
         'product': product
     }
     $.get(endpoint, data, function (res) {
-        onSubmit(res[0]);
+        onSubmit(res[0]); //give Product-Data to function
     });
 }
 
-deletecard = function(onSubmit){
+deletecard = function (onSubmit) {
     var endpoint = "./php/API.php/deletecard";
     var product = getParameterByName("product");
 
@@ -23,10 +26,10 @@ deletecard = function(onSubmit){
         'product': product
     }
 
-    $.get(endpoint, data, function(res, err){
-        if(!res.success){
+    $.get(endpoint, data, function (res, err) {
+        if (!res.success) {
             console.log(res.success);
-        }else{
+        } else {
             $("#edit-card").addClass("hide");
             $(".message.success.hide").removeClass("hide");
             console.log(res.success);
@@ -51,14 +54,15 @@ addcard = function (onSubmit) {
     // var file = $("input[name='file']")[0].files[0];
     var partial = $("input[name='partial']:checked").val();
 
+
     var type = partial;
-    if(!type){
+    if (!type) {
         type = 0;
     }
-    if(!partial){
+    if (!partial) {
         partial = 0;
     }
-    if(!anteile){
+    if (!anteile) {
         anteile = 1;
     }
 
@@ -87,10 +91,10 @@ addcard = function (onSubmit) {
     //     }
     // });
 
-    $.get(endpoint, data, function(res, err){
-        if(!res.success){
+    $.get(endpoint, data, function (res, err) {
+        if (!res.success) {
             console.log(res.success);
-        }else{
+        } else {
             $("form#add-card").addClass("hide");
             $(".message.success.hide").removeClass("hide");
             console.log(res.success);
@@ -106,13 +110,13 @@ editcard = function (onSubmit) {
     var image = $("input[name='image']").val();
     var url = $("input[name='url']").val();
     var price = $("input[name='price']").val();
-    var anteile = $("input[name='price']").val()/10;
+    var anteile = $("input[name='price']").val() / 10;
     var partial = $("input[name='partial']:checked").val();
     var product = $("input[name='product']").val();
     var type = partial;
-    if(!type) type = 0;
-    if(!partial) partial = 0;
-    if(!anteile) anteile = 1;
+    if (!type) type = 0;
+    if (!partial) partial = 0;
+    if (!anteile) anteile = 1;
 
     var data = {
         'name': name,
@@ -126,10 +130,10 @@ editcard = function (onSubmit) {
         'product': product
     };
 
-    $.post(endpoint, data, function(res, err){
-        if(!res.success){
+    $.post(endpoint, data, function (res, err) {
+        if (!res.success) {
             console.log(res.success);
-        }else{
+        } else {
             $(".message.success.hide").removeClass("hide");
             console.log(res.success);
         }
@@ -137,7 +141,6 @@ editcard = function (onSubmit) {
 };
 
 give = function (onSubmit) {
-    console.log("test");
     var endpoint = "./php/API.php/give";
 
     var vorname = $("input[name='vorname']").val();
@@ -145,56 +148,78 @@ give = function (onSubmit) {
     var email = $("input[name='email']").val();
     var adresse = $("input[name='adresse']").val();
     var ort = $("input[name='ort']").val();
-    var anteile = $("input[type='range']").val()/10;
+    var anteile = Math.floor($("input[type='range']").val()) / 10;
     var text = $("textarea[name='desc']").val();
-    var pay = $("input[name='pay']").val();
-    if(!pay) pay = 0;
-    var product = $("input[name='product']").val();
+    var range = $("input[name='pay']");
+    var give = $("input[name='give']");
 
-    setCookie("vorname", vorname);
-    setCookie("nachname", name);
-    setCookie("email", email);
-    setCookie("adresse", adresse);
-    setCookie("ort", ort);
+    var pay;
 
-    var data = {
-        'vorname': vorname,
-        'name': name,
-        'email': email,
-        'adresse': adresse,
-        'ort': ort,
-        'anteile': anteile,
-        'text': text,
-        'pay': pay,
-        'product': product
-    };
+    getproductdata(payOrNot);
 
-    $.get(endpoint, data,  function (res, err) {
-        if(!res.success){
-            $(".message.success").addClass("hide");
-            $(".message.fail.hide").removeClass("hide");
-            if(res.anteile==1){
-                $(".message.fail").html("Es ist nur noch "+res.anteile+" Anteil verfügbar.");
-            }else if(res.anteile==0){
-                $(".message.fail").html("Ups, das ging aber schnell. Jemand ist Dir zuvorgekommen. Leider sind keine Anteile mehr verfügbar. Aber es gibt noch andere Geschenke!");
-                $("form#schenken, .cookie, .cookie-data").addClass("hide");
-            }else{
-                $(".message.fail").html("Es sind nur noch "+res.anteile+" Anteile verfügbar.");
-            }
 
+    function payOrNot(data){
+        if(data.partial == 1){
+            if(give.prop("checked")==true) pay = 0;
+            else pay = 1;
         }else{
-            $(".message.fail, form#schenken, .cookie, .cookie-data").addClass("hide");
-            $(".message.success.hide").removeClass("hide");
-            console.log(res.success + " | noch verfügbare Anteile: "+res.anteile);
+            if (range.prop("checked")==false) pay = 0;
+            else pay = 1;
         }
-    });
+        callBack();
+    }
+
+    function callBack(){
+        console.log("pay:"+ pay);
+
+        var product = $("input[name='product']").val();
+
+        setCookie("vorname", vorname);
+        setCookie("nachname", name);
+        setCookie("email", email);
+        setCookie("adresse", adresse);
+        setCookie("ort", ort);
+
+        var data = {
+            'vorname': vorname,
+            'name': name,
+            'email': email,
+            'adresse': adresse,
+            'ort': ort,
+            'anteile': anteile,
+            'text': text,
+            'pay': pay,
+            'product': product
+        };
+
+        $.get(endpoint, data, function (res, err) {
+            if (!res.success) {
+                $(".message.success").addClass("hide");
+                $(".message.fail.hide").removeClass("hide");
+                if (res.anteile == 1) {
+                    $(".message.fail").html("Es ist nur noch " + res.anteile + " Anteil verfügbar.");
+                } else if (res.anteile == 0) {
+                    $(".message.fail").html("Ups, das ging aber schnell. Jemand ist Dir zuvorgekommen. Leider sind keine Anteile mehr verfügbar. Aber es gibt noch andere Geschenke!");
+                    $("form#schenken, .cookie, .cookie-data").addClass("hide");
+                } else {
+                    $(".message.fail").html("Es sind nur noch " + res.anteile + " Anteile verfügbar.");
+                }
+
+            } else {
+                $(".message.fail, form#schenken, .cookie, .cookie-data").addClass("hide");
+                $(".message.success.hide").removeClass("hide");
+                console.log(res.success + " | noch verfügbare Anteile: " + res.anteile);
+            }
+        });
+    }
+
 };
 
 // posts to endpoint
 // attach browser fingerprint to data obj.
 // executes callback on success if provided
 function get(endpoint, data, cb) {
-        $.post(endpoint, data, function (res) {
-            cb && cb(); // <- execute callback
-        });
+    $.post(endpoint, data, function (res) {
+        cb && cb(); // <- execute callback
+    });
 }

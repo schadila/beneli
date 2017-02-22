@@ -213,14 +213,18 @@ $(document).ready(function(){
         var mapElement = document.getElementById('map');
 
         // Create the Google Map using our element and options defined above
-        var map = new google.maps.Map(mapElement, mapOptions);
+        if(mapElement){
+            var map = new google.maps.Map(mapElement, mapOptions);
 
-        // Let's also add a marker while we're at it
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(46.814982, 7.341564),
-            map: map,
-            title: 'Schlosshof Schwarzenburg'
-        });
+            // Let's also add a marker while we're at it
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(46.814982, 7.341564),
+                map: map,
+                title: 'Schlosshof Schwarzenburg'
+            });
+        }
+
+
     }
 
 });

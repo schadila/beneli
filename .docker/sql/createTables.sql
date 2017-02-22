@@ -38,7 +38,7 @@ CREATE TABLE `products` (
   `text`    TEXT(1000)        NOT NULL  DEFAULT '',
   `image`   VARCHAR(200)      NOT NULL  DEFAULT '',
   `url`     VARCHAR(200)                DEFAULT '',
-  `price`   decimal(6,2)      NOT NULL  DEFAULT 0,
+  `price`   INT(11)           NOT NULL  DEFAULT 0,
   `anteile` INT(11)           NOT NULL  DEFAULT 0,
   `rest`    INT(11)           NOT NULL DEFAULT 0,
   `partial` BOOLEAN           NOT NULL  DEFAULT 1,

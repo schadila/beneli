@@ -3,7 +3,6 @@
  */
 function showGifts(){
     var endpoint = "./php/API.php/gifts";
-    console.log("showGifts");
 
     $.get(endpoint, function (res) {
 
@@ -14,8 +13,7 @@ function showGifts(){
         addCard += '<a href="add-card.html" class="gift-button">Hinzufügen</a>';
         addCard += '</div>';
 
-        if(profile) $(".container-flex").append(addCard);
-        console.log("addCard prifle:"+profile);
+        if(getCookie("token")) $(".container-flex").append(addCard);
 
         var i = 0;
         res.length && res.forEach(function (gift) {
@@ -41,9 +39,9 @@ function showGifts(){
                 else priceFull = gift.price;
 
                 template =  '<div class="gift gift-'+i+'">';
-                template +=     '<div class="teaser-image" style="background-image:url('+gift.image+')">';
-                if(profile) template +=         '<a class="edit button" href="edit-card.html?product='+gift.id+'">Bearbeiten</a>';
-                template +=     '</div>';
+                template +=     '<a class="no-underline teaserimage_link" href="schenken.html?product='+gift.id+'&pay='+Math.round(priceFull)+'"><div class="teaser-image" style="background-image:url('+gift.image+')">';
+                if(getCookie("token")) template += '<a class="edit button" href="edit-card.html?product='+gift.id+'">Bearbeiten</a>';
+                template +=     '</div></a>';
                 template +=     '<h1><a class="no-underline" href="schenken.html?product='+gift.id+'&pay='+Math.round(priceFull)+'">'+gift.name+'</a></h1>';
                 var text =  gift.text;
                 if(text.length > 250){

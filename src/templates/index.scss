@@ -80,6 +80,10 @@ input {
   position: relative;
 }
 
+.no-underline.teaserimage_link:after{
+  display: none;
+}
+
 .no-underline:hover{
   color: #444;
 }
