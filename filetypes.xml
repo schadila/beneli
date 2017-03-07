@@ -1,7 +1,8 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
-      <mapping pattern="newsletterNav.php" type="PLAIN_TEXT" />
+      <mapping pattern="newsletterNavigation.php" type="PHP" />
+      <mapping pattern="newsletterNav.php" type="PHP" />
       <mapping ext="woff2" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
